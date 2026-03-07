@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_panel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <Button
+                android:id="@+id/btnTopBack"
+                android:layout_width="82dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_panel"
+                android:text="返回"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="急救知识学习"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="82dp"
+                android:layout_height="1dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLearnCpr"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:text="CPR"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <Button
+                android:id="@+id/btnLearnAed"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:text="AED"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnLearnAirway"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:text="气道异物"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <Button
+                android:id="@+id/btnLearnBleeding"
+                android:layout_width="0dp"
+                android:layout_height="54dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_button_primary"
+                android:text="止血包扎"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvKnowledgeContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_panel"
+            android:padding="12dp"
+            android:text="请选择技能模块查看内容。"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</ScrollView>

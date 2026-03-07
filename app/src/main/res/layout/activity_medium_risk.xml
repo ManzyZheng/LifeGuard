@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_warning">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_panel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <Button
+                android:id="@+id/btnTopBack"
+                android:layout_width="82dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_panel"
+                android:text="返回"
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="中风险干预"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="82dp"
+                android:layout_height="1dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_panel"
+            android:padding="12dp"
+            android:text="检测到异常，请问您是否需要急救？可直接语音回答“需要急救”。"
+            android:textColor="@android:color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvMediumTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="剩余确认时间：60秒"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvVoiceStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_panel"
+            android:padding="12dp"
+            android:text="语音状态：准备中..."
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btnMediumSafe"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_panel"
+            android:text="我没事"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnMediumHelp"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_button_danger"
+            android:text="需要急救"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>

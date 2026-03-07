@@ -1,0 +1,47 @@
+# ===== Android Studio / IntelliJ =====
+*.iml
+.idea/caches/
+.idea/libraries/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+.idea/shelf/
+.idea/httpRequests/
+
+# ===== Gradle =====
+.gradle/
+**/build/
+
+# ===== Local SDK config =====
+local.properties
+
+# ===== NDK / CMake =====
+.externalNativeBuild/
+.cxx/
+
+# ===== Build artifacts =====
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+
+# ===== Logs / temp =====
+*.log
+*.tmp
+*.swp
+*.swo
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+
+# ===== Signing / secrets =====
+*.jks
+*.keystore
+*.p12
+*.pem
+*.key
+keystore.properties
+.env

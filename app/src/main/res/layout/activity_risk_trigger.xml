@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_warning"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_panel"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <Button
+            android:id="@+id/btnTopBack"
+            android:layout_width="82dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_panel"
+            android:text="返回"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="风险确认"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="82dp"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:text="检测到异常情况"
+        android:textColor="@android:color/white"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:text="请确认是否需要帮助"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tvCountdown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:text="60"
+        android:textColor="@android:color/white"
+        android:textSize="80sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnIAmFine"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_panel"
+        android:text="我没事"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnNeedHelp"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/bg_button_danger"
+        android:text="需要帮助"
+        android:textColor="@android:color/white"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

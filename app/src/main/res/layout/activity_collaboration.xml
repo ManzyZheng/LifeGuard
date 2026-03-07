@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_panel"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <Button
+                android:id="@+id/btnTopBack"
+                android:layout_width="82dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_panel"
+                android:text="返回"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="协同救援"
+                android:textColor="@color/text_primary"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="82dp"
+                android:layout_height="1dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="220dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_qr_placeholder"
+            android:gravity="center"
+            android:text="协作二维码\n（示例占位）"
+            android:textColor="#111111"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTaskAssign"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_panel"
+            android:padding="12dp"
+            android:textColor="@color/text_primary"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</ScrollView>

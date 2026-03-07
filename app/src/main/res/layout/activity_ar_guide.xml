@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:orientation="vertical"
+    android:padding="14dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@drawable/bg_panel"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <Button
+            android:id="@+id/btnTopBack"
+            android:layout_width="82dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_panel"
+            android:text="返回"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="AR急救指导"
+            android:textColor="@color/text_primary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="82dp"
+            android:layout_height="1dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="#101010">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#222222"
+            android:gravity="center"
+            android:text="摄像头AR画面区域（示例）"
+            android:textColor="@color/text_secondary"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:background="#AA000000"
+            android:padding="8dp"
+            android:text="按压位置：胸部中央"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvArStep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_panel"
+        android:padding="12dp"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnNextStep"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_button_primary"
+        android:text="下一步"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+</LinearLayout>
