@@ -45,14 +45,16 @@
         android:layout_weight="1"
         android:background="#101010">
 
-        <TextView
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#222222"
-            android:gravity="center"
-            android:text="摄像头AR画面区域（示例）"
-            android:textColor="@color/text_secondary"
-            android:textSize="20sp" />
+            android:keepScreenOn="true" />
+
+        <com.example.firstaid.ui.CprOverlayView
+            android:id="@+id/cprOverlayView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
         <TextView
             android:layout_width="match_parent"
@@ -60,9 +62,9 @@
             android:layout_gravity="top"
             android:background="#AA000000"
             android:padding="8dp"
-            android:text="按压位置：胸部中央"
+            android:text="AR叠加：胸口定位 + 按压节奏(110 BPM)"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp" />
     </FrameLayout>
 
     <TextView
