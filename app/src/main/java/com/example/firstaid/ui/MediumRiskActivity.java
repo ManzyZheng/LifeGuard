@@ -24,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import com.example.firstaid.R;
+import com.example.firstaid.logic.RiskPopupCoordinator;
 import com.example.firstaid.model.RiskLevel;
 import com.example.firstaid.service.BackgroundDetectionService;
 
@@ -75,6 +76,10 @@ public class MediumRiskActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!RiskPopupCoordinator.tryEnter(RiskLevel.MEDIUM)) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_medium_risk);
 
         TextView tvTimer = findViewById(R.id.tvMediumTimer);
@@ -341,6 +346,7 @@ public class MediumRiskActivity extends AppCompatActivity {
             tts.stop();
             tts.shutdown();
         }
+        RiskPopupCoordinator.release(RiskLevel.MEDIUM);
     }
 
     private void notifyBackgroundServiceUserSafe() {

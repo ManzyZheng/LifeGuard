@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.firstaid.logic.RiskPopupCoordinator;
 import com.example.firstaid.model.RiskLevel;
 import com.example.firstaid.service.BackgroundDetectionService;
 import com.example.firstaid.ui.AedNavigationActivity;
@@ -163,6 +164,9 @@ public class MainActivity extends AppCompatActivity {
         if (inInterventionFlow) {
             return;
         }
+        if (!RiskPopupCoordinator.tryRequest(RiskLevel.MEDIUM)) {
+            return;
+        }
         inInterventionFlow = true;
         Intent intent = new Intent(this, MediumRiskActivity.class);
         mediumRiskLauncher.launch(intent);
@@ -170,6 +174,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void maybeOpenEmergencyMode() {
         if (inInterventionFlow) {
+            return;
+        }
+        if (!RiskPopupCoordinator.tryRequest(RiskLevel.HIGH)) {
             return;
         }
         inInterventionFlow = true;

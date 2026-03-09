@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.firstaid.R;
+import com.example.firstaid.logic.RiskPopupCoordinator;
+import com.example.firstaid.model.RiskLevel;
 
 import java.util.Locale;
 
@@ -23,6 +25,10 @@ public class EmergencyModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!RiskPopupCoordinator.tryEnter(RiskLevel.HIGH)) {
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_emergency_mode);
 
         TextView pulseDot = findViewById(R.id.viewPulseDot);
@@ -74,5 +80,6 @@ public class EmergencyModeActivity extends AppCompatActivity {
             tts.stop();
             tts.shutdown();
         }
+        RiskPopupCoordinator.release(RiskLevel.HIGH);
     }
 }

@@ -17,6 +17,7 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.firstaid.MainActivity;
 import com.example.firstaid.R;
+import com.example.firstaid.logic.RiskPopupCoordinator;
 import com.example.firstaid.logic.SensorFusionManager;
 import com.example.firstaid.model.RiskLevel;
 import com.example.firstaid.ui.EmergencyModeActivity;
@@ -91,14 +92,19 @@ public class BackgroundDetectionService extends Service {
         broadcastRisk(level, score, monitorState, suggestion);
         if (level == RiskLevel.LOW) {
             if (now - lastLowPopupMs > 25_000L) {
-                lastLowPopupMs = now;
-                launchLowRiskPopup();
+                if (RiskPopupCoordinator.tryRequest(RiskLevel.LOW)) {
+                    lastLowPopupMs = now;
+                    launchLowRiskPopup();
+                }
             }
             return;
         }
         if (level == RiskLevel.MEDIUM || level == RiskLevel.HIGH) {
             boolean sameRiskCooldown = (level == lastNavigatedRisk && now - lastNavigationMs < 12_000L);
             if (sameRiskCooldown) {
+                return;
+            }
+            if (!RiskPopupCoordinator.tryRequest(level)) {
                 return;
             }
             lastNavigationMs = now;
@@ -127,6 +133,7 @@ public class BackgroundDetectionService extends Service {
         try {
             startActivity(intent);
         } catch (Exception ignored) {
+            RiskPopupCoordinator.release(RiskLevel.LOW);
             // Fall back to alert notification if direct start is restricted by system.
         }
 
@@ -174,6 +181,11 @@ public class BackgroundDetectionService extends Service {
         try {
             startActivity(intent);
         } catch (Exception ignored) {
+            if (target == EmergencyModeActivity.class) {
+                RiskPopupCoordinator.release(RiskLevel.HIGH);
+            } else {
+                RiskPopupCoordinator.release(RiskLevel.MEDIUM);
+            }
             // Keep full-screen notification fallback.
         }
     }
