@@ -26,6 +26,8 @@ import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.camera.view.PreviewView;
 import androidx.core.content.ContextCompat;
 
+import android.content.Intent;
+
 import com.example.firstaid.R;
 import com.google.common.util.concurrent.ListenableFuture;
 
@@ -38,8 +40,7 @@ public class ArGuideActivity extends AppCompatActivity {
     private static final String STEP1_CENTER_TEXT = "检查患者意识\n轻拍肩膀并呼喊";
     private final String[] steps = new String[]{
             STEP1_CENTER_TEXT,
-            "步骤2：双手放在胸部中央持续按压，保持每分钟120次节奏。",
-            "步骤3：准备AED并按照语音提示除颤。"
+            "步骤2：双手放在胸部中央持续按压，保持每分钟120次节奏。"
     };
     private static final int TARGET_BPM = 110;
     private static final long BEAT_INTERVAL_MS = 60_000L / TARGET_BPM;
@@ -126,10 +127,13 @@ public class ArGuideActivity extends AppCompatActivity {
         btnNext.setOnClickListener(v -> {
             if (isStepOne(index)) {
                 index = 1;
+                renderStep();
+            } else if (isCompressionStep(index)) {
+                startActivity(new Intent(this, AedNavigationActivity.class));
             } else {
                 index = (index + 1) % steps.length;
+                renderStep();
             }
-            renderStep();
         });
     }
 
