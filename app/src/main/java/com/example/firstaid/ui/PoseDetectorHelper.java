@@ -39,8 +39,17 @@ public class PoseDetectorHelper {
     private static final int RIGHT_SHOULDER_INDEX = 12;
     private static final String MODEL_ASSET_PATH = "pose_landmarker_lite.task";
 
+    /** 胸口位置向下偏移量（归一化坐标，0.05 ≈ 肩膀到乳头连线的距离）。 */
+    private static final float CHEST_Y_OFFSET = 0.05f;
+
+    /** 指数平滑系数：越小越平滑，越大越灵敏。*/
+    private static final float SMOOTH_ALPHA = 0.2f;
+
     private final Listener listener;
     private PoseLandmarker poseLandmarker;
+
+    private float smoothX = -1f;
+    private float smoothY = -1f;
 
     public PoseDetectorHelper(@NonNull Context context, @NonNull Listener listener) {
         this.listener = listener;
@@ -106,16 +115,26 @@ public class PoseDetectorHelper {
 
         NormalizedLandmark leftShoulder = landmarks.get(LEFT_SHOULDER_INDEX);
         NormalizedLandmark rightShoulder = landmarks.get(RIGHT_SHOULDER_INDEX);
-        float chestX = (leftShoulder.x() + rightShoulder.x()) * 0.5f;
-        float chestY = (leftShoulder.y() + rightShoulder.y()) * 0.5f;
+        float rawX = (leftShoulder.x() + rightShoulder.x()) * 0.5f;
+        // 向下偏移，更贴近真实 CPR 按压位置（两乳头连线中点）
+        float rawY = (leftShoulder.y() + rightShoulder.y()) * 0.5f + CHEST_Y_OFFSET;
 
-        if (Float.isNaN(chestX) || Float.isNaN(chestY)) {
+        if (Float.isNaN(rawX) || Float.isNaN(rawY)) {
             listener.onPoseMissing();
             return;
         }
-        chestX = clamp01(chestX);
-        chestY = clamp01(chestY);
-        listener.onChestDetected(chestX, chestY);
+
+        // 指数滑动平均，抑制逐帧抖动
+        if (smoothX < 0f) {
+            // 首帧直接赋值，避免从 (0,0) 滑入产生跳变
+            smoothX = rawX;
+            smoothY = rawY;
+        } else {
+            smoothX = SMOOTH_ALPHA * rawX + (1f - SMOOTH_ALPHA) * smoothX;
+            smoothY = SMOOTH_ALPHA * rawY + (1f - SMOOTH_ALPHA) * smoothY;
+        }
+
+        listener.onChestDetected(clamp01(smoothX), clamp01(smoothY));
     }
 
     private Bitmap imageProxyToBitmap(ImageProxy imageProxy) {
@@ -164,6 +183,8 @@ public class PoseDetectorHelper {
     }
 
     public void release() {
+        smoothX = -1f;
+        smoothY = -1f;
         if (poseLandmarker != null) {
             poseLandmarker.close();
             poseLandmarker = null;
