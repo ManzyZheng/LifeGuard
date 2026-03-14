@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private View viewRiskDot;
     private RiskGaugeView riskGaugeView;
     private Button btnLowRiskHelp;
+    private Button btnSafeConfirm;
     private View btnMockRisk;
     private boolean demoLowRiskMode = false;
     private boolean inInterventionFlow = false;
@@ -117,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
         viewRiskDot = findViewById(R.id.viewRiskDot);
         riskGaugeView = findViewById(R.id.viewRiskGauge);
         btnLowRiskHelp = findViewById(R.id.btnLowRiskHelp);
+        btnSafeConfirm = findViewById(R.id.btnSafeConfirm);
     }
 
     private void bindActions() {
@@ -137,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
         btnProfile.setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
         btnMockRisk.setOnClickListener(v -> forceRiskEscalationForDemo());
         btnLowRiskHelp.setOnClickListener(v -> maybeOpenMediumRisk());
+        btnSafeConfirm.setOnClickListener(v -> {
+            notifyBackgroundServiceUserSafe();
+            renderSafeStatusAfterManualConfirm();
+        });
 
         navHome.setOnClickListener(v -> {
             // Already on home; keep current behavior.
@@ -162,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
         tvSuggestion.setText(suggestion);
         applyRiskVisual(level, score);
         updateLowRiskAction(level);
+        updateSafeConfirmAction(level);
         updateDemoEntryVisibility(level);
 
         // Foreground fallback: even if background service is restricted by ROM,
@@ -178,6 +185,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         btnLowRiskHelp.setVisibility(level == RiskLevel.LOW ? View.VISIBLE : View.GONE);
+    }
+
+    private void updateSafeConfirmAction(RiskLevel level) {
+        if (btnSafeConfirm == null) {
+            return;
+        }
+        btnSafeConfirm.setVisibility(level == RiskLevel.SAFE ? View.GONE : View.VISIBLE);
     }
 
     private void maybeOpenMediumRisk() {
@@ -212,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
         tvSuggestion.setText("如需帮助，请点击“我需要帮助（进入中风险）”。");
         applyRiskVisual(RiskLevel.LOW, 80);
         updateLowRiskAction(RiskLevel.LOW);
+        updateSafeConfirmAction(RiskLevel.LOW);
         updateDemoEntryVisibility(RiskLevel.LOW);
         Toast.makeText(this, "已从低风险启动演示流程", Toast.LENGTH_SHORT).show();
     }
@@ -236,6 +251,7 @@ public class MainActivity extends AppCompatActivity {
         tvSuggestion.setText("已确认“我没事”，系统恢复安全监测。");
         applyRiskVisual(RiskLevel.SAFE, 100);
         updateLowRiskAction(RiskLevel.SAFE);
+        updateSafeConfirmAction(RiskLevel.SAFE);
         updateDemoEntryVisibility(RiskLevel.SAFE);
     }
 
