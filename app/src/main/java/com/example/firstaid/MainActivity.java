@@ -32,13 +32,18 @@ import com.example.firstaid.ui.EmergencyModeActivity;
 import com.example.firstaid.ui.KnowledgeActivity;
 import com.example.firstaid.ui.MediumRiskActivity;
 import com.example.firstaid.ui.ProfileActivity;
+import com.example.firstaid.ui.RiskGaugeView;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvRiskLevel;
     private TextView tvRiskScore;
     private TextView tvMonitor;
     private TextView tvSuggestion;
+    private TextView tvRiskState;
+    private View viewRiskDot;
+    private RiskGaugeView riskGaugeView;
     private Button btnLowRiskHelp;
+    private View btnMockRisk;
     private boolean demoLowRiskMode = false;
     private boolean inInterventionFlow = false;
     private boolean riskReceiverRegistered = false;
@@ -108,16 +113,23 @@ public class MainActivity extends AppCompatActivity {
         tvRiskScore = findViewById(R.id.tvRiskScore);
         tvMonitor = findViewById(R.id.tvMonitorState);
         tvSuggestion = findViewById(R.id.tvSuggestion);
+        tvRiskState = findViewById(R.id.tvRiskState);
+        viewRiskDot = findViewById(R.id.viewRiskDot);
+        riskGaugeView = findViewById(R.id.viewRiskGauge);
         btnLowRiskHelp = findViewById(R.id.btnLowRiskHelp);
     }
 
     private void bindActions() {
-        Button btnAr = findViewById(R.id.btnArEntry);
-        Button btnAed = findViewById(R.id.btnAedNav);
-        Button btnHotline = findViewById(R.id.btnHotline);
-        Button btnKnowledge = findViewById(R.id.btnKnowledge);
-        Button btnProfile = findViewById(R.id.btnProfile);
-        Button btnMockRisk = findViewById(R.id.btnMockRisk);
+        View btnAr = findViewById(R.id.btnArEntry);
+        View btnAed = findViewById(R.id.btnAedNav);
+        View btnHotline = findViewById(R.id.btnHotline);
+        View btnKnowledge = findViewById(R.id.btnKnowledge);
+        View btnProfile = findViewById(R.id.btnProfile);
+        btnMockRisk = findViewById(R.id.btnMockRisk);
+        View navHome = findViewById(R.id.navHome);
+        View navKnowledge = findViewById(R.id.navKnowledge);
+        View navAed = findViewById(R.id.navAed);
+        View navProfile = findViewById(R.id.navProfile);
 
         btnAr.setOnClickListener(v -> startActivity(new Intent(this, ArGuideActivity.class)));
         btnAed.setOnClickListener(v -> startActivity(new Intent(this, AedNavigationActivity.class)));
@@ -125,6 +137,13 @@ public class MainActivity extends AppCompatActivity {
         btnProfile.setOnClickListener(v -> startActivity(new Intent(this, ProfileActivity.class)));
         btnMockRisk.setOnClickListener(v -> forceRiskEscalationForDemo());
         btnLowRiskHelp.setOnClickListener(v -> maybeOpenMediumRisk());
+
+        navHome.setOnClickListener(v -> {
+            // Already on home; keep current behavior.
+        });
+        navKnowledge.setOnClickListener(v -> btnKnowledge.performClick());
+        navAed.setOnClickListener(v -> btnAed.performClick());
+        navProfile.setOnClickListener(v -> btnProfile.performClick());
 
         btnHotline.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:120"));
@@ -138,10 +157,12 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         tvRiskLevel.setText(getRiskText(level));
-        tvRiskScore.setText("实时安全评分：" + score + "/100");
+        tvRiskScore.setText(String.valueOf(score));
         tvMonitor.setText("监测状态：" + monitorState);
-        tvSuggestion.setText("提示：" + suggestion);
+        tvSuggestion.setText(suggestion);
+        applyRiskVisual(level, score);
         updateLowRiskAction(level);
+        updateDemoEntryVisibility(level);
 
         // Foreground fallback: even if background service is restricted by ROM,
         // app should still navigate immediately while user is on the home screen.
@@ -185,33 +206,86 @@ public class MainActivity extends AppCompatActivity {
 
     private void forceRiskEscalationForDemo() {
         demoLowRiskMode = true;
-        tvRiskLevel.setText("当前风险等级：低风险");
-        tvRiskScore.setText("实时安全评分：80/100");
+        tvRiskLevel.setText("低风险");
+        tvRiskScore.setText("80");
         tvMonitor.setText("监测状态：演示模式（低风险起始）");
-        tvSuggestion.setText("提示：如需帮助，请点击“我需要帮助（进入中风险）”。");
+        tvSuggestion.setText("如需帮助，请点击“我需要帮助（进入中风险）”。");
+        applyRiskVisual(RiskLevel.LOW, 80);
         updateLowRiskAction(RiskLevel.LOW);
+        updateDemoEntryVisibility(RiskLevel.LOW);
         Toast.makeText(this, "已从低风险启动演示流程", Toast.LENGTH_SHORT).show();
     }
 
     private String getRiskText(RiskLevel level) {
         switch (level) {
             case LOW:
-                return "当前风险等级：低风险";
+                return "低风险";
             case MEDIUM:
-                return "当前风险等级：中风险";
+                return "中风险";
             case HIGH:
-                return "当前风险等级：高风险";
+                return "高风险";
             case SAFE:
             default:
-                return "当前风险等级：安全";
+                return "安全";
         }
     }
 
     private void renderSafeStatusAfterManualConfirm() {
-        tvRiskLevel.setText("当前风险等级：安全");
-        tvRiskScore.setText("实时安全评分：100/100");
-        tvSuggestion.setText("提示：已确认“我没事”，系统恢复安全监测。");
+        tvRiskLevel.setText("安全");
+        tvRiskScore.setText("100");
+        tvSuggestion.setText("已确认“我没事”，系统恢复安全监测。");
+        applyRiskVisual(RiskLevel.SAFE, 100);
         updateLowRiskAction(RiskLevel.SAFE);
+        updateDemoEntryVisibility(RiskLevel.SAFE);
+    }
+
+    private void updateDemoEntryVisibility(RiskLevel level) {
+        if (btnMockRisk == null) {
+            return;
+        }
+        btnMockRisk.setVisibility(level == RiskLevel.LOW ? View.GONE : View.VISIBLE);
+    }
+
+    private void applyRiskVisual(RiskLevel level, int score) {
+        int levelColorRes;
+        int gaugeColorRes;
+        switch (level) {
+            case LOW:
+                levelColorRes = R.color.ui_risk_low;
+                gaugeColorRes = R.color.ui_risk_low;
+                break;
+            case MEDIUM:
+                levelColorRes = R.color.ui_risk_medium;
+                gaugeColorRes = R.color.ui_risk_medium;
+                break;
+            case HIGH:
+                levelColorRes = R.color.ui_risk_high;
+                gaugeColorRes = R.color.ui_risk_high;
+                break;
+            case SAFE:
+            default:
+                levelColorRes = R.color.ui_risk_safe;
+                gaugeColorRes = R.color.ui_risk_safe;
+                break;
+        }
+        int levelColor = ContextCompat.getColor(this, levelColorRes);
+        int gaugeColor = ContextCompat.getColor(this, gaugeColorRes);
+        int riskStateColor = ContextCompat.getColor(this,
+                level == RiskLevel.SAFE ? R.color.ui_risk_safe : R.color.ui_risk_high);
+        tvRiskLevel.setTextColor(levelColor);
+
+        if (tvRiskState != null) {
+            tvRiskState.setText(level == RiskLevel.SAFE ? "监测中" : "风险预警");
+            tvRiskState.setTextColor(riskStateColor);
+        }
+
+        if (viewRiskDot != null) {
+            viewRiskDot.setBackgroundTintList(android.content.res.ColorStateList.valueOf(riskStateColor));
+        }
+        if (riskGaugeView != null) {
+            riskGaugeView.setProgressColor(gaugeColor);
+            riskGaugeView.setScore(score);
+        }
     }
 
     @Override

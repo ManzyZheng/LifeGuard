@@ -10,4 +10,22 @@
     <color name="text_secondary">#D0D0D0</color>
     <color name="accent_blue">#42A5F5</color>
     <color name="action_red">#E53935</color>
+    <!-- ===== Light medical UI (preview) ===== -->
+    <color name="ui_bg_light_blue">#EAF4FF</color>
+    <color name="ui_card_white">#FFFFFF</color>
+    <color name="ui_text_main">#333333</color>
+    <color name="ui_text_sub">#666666</color>
+    <color name="ui_brand_red">#E53935</color>
+    <color name="ui_brand_blue">#2F80ED</color>
+    <color name="ui_shadow_hint">#12000000</color>
+    <color name="ui_outline_soft">#D6E6F7</color>
+    <color name="ui_page_bg">#F8F6F6</color>
+    <color name="ui_brand_orange">#EC5B13</color>
+    <color name="ui_text_dark">#1A1C2E</color>
+    <color name="ui_text_muted">#64748B</color>
+    <color name="ui_risk_safe">#10B981</color>
+    <color name="ui_risk_low">#EAB308</color>
+    <color name="ui_risk_medium">#F97316</color>
+    <color name="ui_risk_high">#EF4444</color>
+    <color name="ui_nav_inactive">#94A3B8</color>
 </resources>
