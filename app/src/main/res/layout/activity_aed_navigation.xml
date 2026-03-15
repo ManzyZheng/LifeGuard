@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ui_page_bg">
+    android:background="@drawable/bg_ai_gradient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="62dp"
-        android:background="@color/ui_card_white"
+        android:background="#E6FFFFFF"
         android:elevation="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -23,13 +23,18 @@
         android:paddingRight="12dp">
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnTopBack"
             android:layout_width="82dp"
             android:layout_height="42dp"
             android:background="@android:color/transparent"
             android:text="@string/common_back"
             android:textAllCaps="false"
-            android:textColor="@color/ui_brand_orange"
+            android:textColor="@color/ai_accent_blue"
             android:textStyle="bold" />
 
         <TextView
@@ -38,7 +43,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="@string/aed_title"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -52,20 +57,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_card_white_16"
+        android:background="@drawable/bg_glass_card"
         android:padding="14dp"
-        android:textColor="@color/ui_text_dark"
+        android:textColor="@color/ai_text_main"
         android:textSize="18sp" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnNavigateAed"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/bg_button_orange_16"
+            android:background="@drawable/bg_ai_button_soft_blue"
             android:textAllCaps="false"
             android:text="@string/aed_navigate_button"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_accent_blue"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -75,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="78dp"
         android:layout_gravity="bottom"
-        android:background="@color/ui_card_white"
+        android:background="#E6FFFFFF"
         android:baselineAligned="false"
         android:elevation="10dp"
         android:gravity="center"
@@ -98,14 +108,14 @@
                 android:layout_height="23dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_nav_home"
-                app:tint="@color/ui_nav_inactive" />
+                app:tint="@color/ai_text_sub" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/nav_home"
-                android:textColor="@color/ui_nav_inactive"
+                android:textColor="@color/ai_text_sub"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -122,14 +132,14 @@
                 android:layout_height="23dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_nav_learn"
-                app:tint="@color/ui_nav_inactive" />
+                app:tint="@color/ai_text_sub" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/nav_learn"
-                android:textColor="@color/ui_nav_inactive"
+                android:textColor="@color/ai_text_sub"
                 android:textSize="11sp" />
         </LinearLayout>
 
@@ -146,14 +156,14 @@
                 android:layout_height="23dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_nav_map"
-                app:tint="@color/ui_brand_orange" />
+                app:tint="@color/ai_accent_blue" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/nav_aed_map"
-                android:textColor="@color/ui_brand_orange"
+                android:textColor="@color/ai_accent_blue"
                 android:textSize="11sp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -171,14 +181,14 @@
                 android:layout_height="23dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_nav_settings"
-                app:tint="@color/ui_nav_inactive" />
+                app:tint="@color/ai_text_sub" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/nav_settings"
-                android:textColor="@color/ui_nav_inactive"
+                android:textColor="@color/ai_text_sub"
                 android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>

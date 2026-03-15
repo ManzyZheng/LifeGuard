@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_card_white_16"
+    android:background="@drawable/bg_glass_card"
     android:orientation="vertical"
     android:padding="18dp">
 
@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/low_risk_title"
-        android:textColor="@color/ui_text_dark"
+        android:textColor="@color/ai_text_main"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -20,18 +20,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:textColor="@color/ui_text_muted"
+        android:textColor="@color/ai_text_sub"
         android:textSize="18sp" />
 
     <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
         android:id="@+id/btnLowRiskIgnore"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_button_safe_soft"
+        android:background="@drawable/bg_ai_button_secondary"
         android:text="@string/common_im_fine"
         android:textAllCaps="false"
-        android:textColor="@color/ui_risk_safe"
+        android:textColor="@color/ai_text_main"
         android:textStyle="bold" />
 
     <Button
@@ -39,12 +44,12 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_button_safe_soft"
+        android:background="@drawable/bg_ai_button_secondary"
         android:backgroundTint="?attr/colorPrimary"
         app:backgroundTint="?attr/colorPrimary"
         android:textAllCaps="false"
         android:text="@string/common_need_help"
-        android:textColor="@android:color/white"
+        android:textColor="@color/ai_text_main"
         android:textStyle="bold" />
 
 </LinearLayout>

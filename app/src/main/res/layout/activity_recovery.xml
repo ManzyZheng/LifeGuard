@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ui_page_bg"
+    android:background="@drawable/bg_ai_gradient"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:background="@color/ui_card_white"
+            android:background="#E6FFFFFF"
             android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -23,13 +23,18 @@
             android:paddingRight="12dp">
 
             <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
                 android:id="@+id/btnTopBack"
                 android:layout_width="82dp"
                 android:layout_height="42dp"
                 android:background="@android:color/transparent"
                 android:text="@string/common_back"
                 android:textAllCaps="false"
-                android:textColor="@color/ui_brand_orange"
+                android:textColor="@color/ai_accent_blue"
                 android:textStyle="bold" />
 
             <TextView
@@ -38,7 +43,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/recovery_title"
-                android:textColor="@color/ui_text_dark"
+                android:textColor="@color/ai_text_main"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -51,10 +56,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_card_white_16"
+            android:background="@drawable/bg_glass_card"
             android:padding="12dp"
             android:text="@string/recovery_summary"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="17sp" />
 
         <CheckBox
@@ -63,18 +68,23 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/recovery_notify_contact"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="18sp" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnSaveRecovery"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_button_orange_16"
+            android:background="@drawable/bg_ai_button_soft_blue"
             android:textAllCaps="false"
             android:text="@string/recovery_save_record"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_accent_blue"
             android:textStyle="bold" />
 
         <Button
@@ -82,12 +92,12 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_safe_soft"
+            android:background="@drawable/bg_ai_button_secondary"
             android:backgroundTint="@null"
             app:backgroundTint="@null"
             android:text="@string/recovery_back_home"
             android:textAllCaps="false"
-            android:textColor="@color/ui_risk_safe" />
+            android:textColor="@color/ai_text_main" />
 
     </LinearLayout>
 

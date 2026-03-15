@@ -301,12 +301,14 @@ public class ArGuideActivity extends AppCompatActivity {
     }
 
     private void applyButtonStyleForAed() {
-        btnNext.setBackgroundResource(R.drawable.bg_button_green);
+        btnNext.setBackgroundResource(R.drawable.bg_ai_button_secondary);
+        btnNext.setTextColor(ContextCompat.getColor(this, R.color.ai_text_main));
         updateButtonSize(AED_BUTTON_HEIGHT_DP, AED_BUTTON_TEXT_SP);
     }
 
     private void applyButtonStyleForDefault() {
-        btnNext.setBackgroundResource(R.drawable.bg_button_primary);
+        btnNext.setBackgroundResource(R.drawable.bg_ai_button_soft_blue);
+        btnNext.setTextColor(ContextCompat.getColor(this, R.color.ai_accent_blue));
         updateButtonSize(DEFAULT_BUTTON_HEIGHT_DP, DEFAULT_BUTTON_TEXT_SP);
     }
 

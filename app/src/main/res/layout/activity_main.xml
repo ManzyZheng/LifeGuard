@@ -3,491 +3,476 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ui_page_bg">
+    android:background="@drawable/bg_ai_gradient">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:paddingBottom="124dp">
+        android:paddingBottom="100dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="24dp">
+            android:padding="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="62dp"
-                android:background="@color/ui_card_white"
-                android:elevation="2dp"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/main_title_dashboard"
-                    android:textColor="@color/ui_text_dark"
-                    android:textSize="19sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Top Area -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="16dp"
-                android:paddingTop="8dp"
-                android:paddingRight="16dp">
+                android:layout_marginTop="16dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/main_title_dashboard"
+                android:textColor="@color/ai_text_main"
+                android:textSize="22sp"
+                android:fontFamily="sans-serif-medium"
+                android:letterSpacing="0.02" />
+
+            <TextView
+                android:id="@+id/tvMonitorState"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:text="@string/main_monitor_waiting"
+                android:textColor="@color/ai_text_sub"
+                android:textSize="13sp" />
+
+            <!-- Center Risk Indicator -->
+            <FrameLayout
+                android:layout_width="280dp"
+                android:layout_height="280dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp">
+
+                <com.example.firstaid.ui.RiskGaugeView
+                    android:id="@+id/viewRiskGauge"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:gravity="center"
-                    android:orientation="vertical"
-                    android:paddingTop="16dp">
+                    android:orientation="vertical">
 
-                    <FrameLayout
-                        android:layout_width="228dp"
-                        android:layout_height="228dp">
-
-                        <com.example.firstaid.ui.RiskGaugeView
-                            android:id="@+id/viewRiskGauge"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-
-                        <LinearLayout
-                            android:layout_width="154dp"
-                            android:layout_height="154dp"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/tvRiskScore"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/main_risk_score_default"
-                                android:textColor="@color/ui_text_dark"
-                                android:textSize="52sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvRiskLevel"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="-2dp"
-                                android:text="@string/main_risk_safe"
-                                android:textColor="@color/ui_risk_safe"
-                                android:textSize="20sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </FrameLayout>
-
-                    <Button
-                        android:id="@+id/btnLowRiskHelp"
-                        android:layout_width="match_parent"
-                        android:layout_height="54dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_button_safe_soft"
-                        android:backgroundTint="?attr/colorPrimary"
-                        app:backgroundTint="?attr/colorPrimary"
-                        android:text="@string/main_low_risk_help_button"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
-
-                    <Button
-                        android:id="@+id/btnSafeConfirm"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_button_safe_soft"
-                        android:backgroundTint="@null"
-                        app:backgroundTint="@null"
-                        android:text="@string/main_safe_confirm_button"
-                        android:textAllCaps="false"
-                        android:textColor="@color/ui_risk_safe"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:visibility="gone" />
+                    <TextView
+                        android:id="@+id/tvRiskScore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/main_risk_score_default"
+                        android:textColor="@color/ai_text_main"
+                        android:textSize="64sp"
+                        android:fontFamily="sans-serif-light" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="-4dp">
 
                         <View
                             android:id="@+id/viewRiskDot"
-                            android:layout_width="10dp"
-                            android:layout_height="10dp"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
                             android:background="@drawable/bg_dot_indicator"
-                            android:backgroundTint="@color/ui_risk_safe" />
+                            android:backgroundTint="@color/ai_accent_green" />
 
                         <TextView
-                            android:id="@+id/tvRiskState"
+                            android:id="@+id/tvRiskLevel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:text="@string/main_state_monitoring"
-                            android:textColor="@color/ui_risk_safe"
-                            android:textSize="13sp"
-                            android:textStyle="bold" />
+                            android:layout_marginStart="6dp"
+                            android:text="@string/main_risk_safe"
+                            android:textColor="@color/ai_accent_green"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium" />
                     </LinearLayout>
-
+                    
                     <TextView
-                        android:id="@+id/tvMonitorState"
+                        android:id="@+id/tvRiskState"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="@string/main_monitor_waiting"
-                        android:textColor="@color/ui_text_dark"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
+                        android:layout_marginTop="4dp"
+                        android:text="@string/main_state_monitoring"
+                        android:textColor="@color/ai_text_sub"
+                        android:textSize="12sp"
+                        android:visibility="visible"/>
+                        
                     <TextView
                         android:id="@+id/tvSuggestion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="3dp"
+                        android:layout_marginTop="8dp"
                         android:text="@string/main_suggestion_stable"
-                        android:textColor="@color/ui_text_muted"
-                        android:textSize="12sp" />
+                        android:textColor="@color/ai_text_sub"
+                        android:textSize="12sp"
+                        android:gravity="center"
+                        android:maxWidth="160dp" />
                 </LinearLayout>
+            </FrameLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="18dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/btnProfile"
-                        android:layout_width="0dp"
-                        android:layout_height="122dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_card_action"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <FrameLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:background="@drawable/bg_icon_orange_soft">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_user_outline" />
-                        </FrameLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/main_card_profile"
-                            android:textColor="@color/ui_text_dark"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="12dp"
-                        android:layout_height="1dp" />
-
-                    <LinearLayout
-                        android:id="@+id/btnKnowledge"
-                        android:layout_width="0dp"
-                        android:layout_height="122dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_card_action"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <FrameLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:background="@drawable/bg_icon_orange_soft">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_first_aid_knowledge" />
-                        </FrameLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/main_card_knowledge"
-                            android:textColor="@color/ui_text_dark"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:id="@+id/btnAedNav"
-                        android:layout_width="0dp"
-                        android:layout_height="122dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_card_action"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <FrameLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:background="@drawable/bg_icon_orange_soft">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_map_pin_outline" />
-                        </FrameLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/main_card_aed_nav"
-                            android:textColor="@color/ui_text_dark"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-
-                    <Space
-                        android:layout_width="12dp"
-                        android:layout_height="1dp" />
-
-                    <LinearLayout
-                        android:id="@+id/btnArEntry"
-                        android:layout_width="0dp"
-                        android:layout_height="122dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/bg_card_action"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?attr/selectableItemBackground"
-                        android:gravity="center"
-                        android:orientation="vertical">
-
-                        <FrameLayout
-                            android:layout_width="56dp"
-                            android:layout_height="56dp"
-                            android:background="@drawable/bg_icon_orange_soft">
-
-                            <ImageView
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="@null"
-                                android:src="@drawable/ic_view_outline" />
-                        </FrameLayout>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/main_card_ar_guide"
-                            android:textColor="@color/ui_text_dark"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/tvDemoModeLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/main_demo_mode"
-                    android:textColor="#FFA1A1AA"
-                    android:textSize="11sp"
-                    android:textStyle="bold" />
+            <!-- Actions -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnMockRisk"
+                    android:id="@+id/btnLowRiskHelp"
                     android:layout_width="match_parent"
                     android:layout_height="56dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_button_orange_16"
-                    android:text="@string/main_mock_risk"
+                    android:background="@drawable/bg_ai_button_primary"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:text="@string/main_low_risk_help_button"
                     android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textStyle="bold" />
+                    android:textColor="@color/ai_emergency_red"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="0dp"
+                    android:stateListAnimator="@null"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/btnSafeConfirm"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_ai_button_secondary"
+                    android:backgroundTint="@null"
+                    app:backgroundTint="@null"
+                    android:text="@string/main_safe_confirm_button"
+                    android:textAllCaps="false"
+                    android:textColor="@color/ai_text_main"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:elevation="0dp"
+                    android:stateListAnimator="@null"
+                    android:visibility="visible" />
             </LinearLayout>
+
+            <!-- Features Section -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:alignmentMode="alignMargins"
+                android:useDefaultMargins="false">
+
+                <!-- Medical Profile -->
+                <LinearLayout
+                    android:id="@+id/btnProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_glass_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_ai_icon_container">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_user_outline"
+                            app:tint="@color/ai_accent_blue" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/main_card_profile"
+                        android:textColor="@color/ai_text_main"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+
+                <!-- First Aid Guide -->
+                <LinearLayout
+                    android:id="@+id/btnKnowledge"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_glass_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_ai_icon_container">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_first_aid_knowledge"
+                            app:tint="@color/ai_accent_blue" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/main_card_knowledge"
+                        android:textColor="@color/ai_text_main"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+
+                <!-- AED Map -->
+                <LinearLayout
+                    android:id="@+id/btnAedNav"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="6dp"
+                    android:background="@drawable/bg_glass_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_ai_icon_container">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_map_pin_outline"
+                            app:tint="@color/ai_accent_blue" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/main_card_aed_nav"
+                        android:textColor="@color/ai_text_main"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+
+                <!-- AR CPR Guide -->
+                <LinearLayout
+                    android:id="@+id/btnArEntry"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_glass_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_ai_icon_container">
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_view_outline"
+                            app:tint="@color/ai_accent_blue" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/main_card_ar_guide"
+                        android:textColor="@color/ai_text_main"
+                        android:textSize="13sp"
+                        android:fontFamily="sans-serif-medium" />
+                </LinearLayout>
+            </GridLayout>
+
+            <!-- Demo Mode Controls -->
+            <TextView
+                android:id="@+id/tvDemoModeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="32dp"
+                android:text="@string/main_demo_mode"
+                android:textColor="@color/ai_text_sub"
+                android:textSize="11sp"
+                android:letterSpacing="0.05" />
+
+            <Button
+                android:id="@+id/btnMockRisk"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_glass_card"
+                android:backgroundTint="@null"
+                app:backgroundTint="@null"
+                android:text="@string/main_mock_risk"
+                android:textAllCaps="false"
+                android:textColor="@color/ai_text_main"
+                android:textSize="14sp"
+                android:fontFamily="sans-serif-medium"
+                android:elevation="0dp"
+                android:stateListAnimator="@null" />
         </LinearLayout>
     </ScrollView>
 
+    <!-- Floating SOS Button -->
     <LinearLayout
         android:id="@+id/btnHotline"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="96dp"
-        android:background="@drawable/bg_fab_sos"
+        android:layout_marginBottom="90dp"
+        android:background="@drawable/bg_ai_fab_sos"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:elevation="6dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/main_hotline_number"
-            android:textColor="@android:color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-2dp"
             android:text="@string/main_hotline_sos"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.05" />
     </LinearLayout>
 
+    <!-- Bottom Navigation (Glassy) -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="80dp"
         android:layout_gravity="bottom"
-        android:background="@color/ui_card_white"
+        android:background="#E6FFFFFF"
         android:baselineAligned="false"
-        android:elevation="10dp"
+        android:elevation="8dp"
         android:gravity="center"
         android:orientation="horizontal"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="8dp"
-        android:paddingTop="6dp">
+        android:paddingHorizontal="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="12dp">
 
         <LinearLayout
             android:id="@+id/navHome"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_nav_home"
-                app:tint="@color/ui_brand_orange" />
-
+                app:tint="@color/ai_accent_blue" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/nav_home"
-                android:textColor="@color/ui_brand_orange"
+                android:textColor="@color/ai_accent_blue"
                 android:textSize="11sp"
-                android:textStyle="bold" />
+                android:fontFamily="sans-serif-medium" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/navKnowledge"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_nav_learn"
-                app:tint="@color/ui_nav_inactive" />
-
+                app:tint="@color/ai_text_sub" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/nav_learn"
-                android:textColor="@color/ui_nav_inactive"
+                android:textColor="@color/ai_text_sub"
                 android:textSize="11sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/navAed"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_nav_map"
-                app:tint="@color/ui_nav_inactive" />
-
+                app:tint="@color/ai_text_sub" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/nav_aed_map"
-                android:textColor="@color/ui_nav_inactive"
+                android:textColor="@color/ai_text_sub"
                 android:textSize="11sp" />
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/navProfile"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:orientation="vertical">
-
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
             <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_nav_settings"
-                app:tint="@color/ui_nav_inactive" />
-
+                app:tint="@color/ai_text_sub" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/nav_settings"
-                android:textColor="@color/ui_nav_inactive"
+                android:textColor="@color/ai_text_sub"
                 android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>

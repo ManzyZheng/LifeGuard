@@ -249,6 +249,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void renderSafeStatusAfterManualConfirm() {
+        demoLowRiskMode = false;
         tvRiskLevel.setText(R.string.main_risk_safe);
         tvRiskScore.setText(R.string.main_risk_score_default);
         tvSuggestion.setText(R.string.main_safe_confirmed_suggestion);
@@ -270,27 +271,27 @@ public class MainActivity extends AppCompatActivity {
         int gaugeColorRes;
         switch (level) {
             case LOW:
-                levelColorRes = R.color.ui_risk_low;
-                gaugeColorRes = R.color.ui_risk_low;
+                levelColorRes = R.color.ai_accent_blue;
+                gaugeColorRes = R.color.ai_accent_blue;
                 break;
             case MEDIUM:
-                levelColorRes = R.color.ui_risk_medium;
-                gaugeColorRes = R.color.ui_risk_medium;
+                levelColorRes = R.color.ai_text_main;
+                gaugeColorRes = R.color.ai_text_main;
                 break;
             case HIGH:
-                levelColorRes = R.color.ui_risk_high;
-                gaugeColorRes = R.color.ui_risk_high;
+                levelColorRes = R.color.ai_emergency_red;
+                gaugeColorRes = R.color.ai_emergency_red;
                 break;
             case SAFE:
             default:
-                levelColorRes = R.color.ui_risk_safe;
-                gaugeColorRes = R.color.ui_risk_safe;
+                levelColorRes = R.color.ai_accent_green;
+                gaugeColorRes = R.color.ai_accent_green;
                 break;
         }
         int levelColor = ContextCompat.getColor(this, levelColorRes);
         int gaugeColor = ContextCompat.getColor(this, gaugeColorRes);
         int riskStateColor = ContextCompat.getColor(this,
-                level == RiskLevel.SAFE ? R.color.ui_risk_safe : R.color.ui_risk_high);
+                level == RiskLevel.SAFE ? R.color.ai_accent_green : R.color.ai_emergency_red);
         tvRiskLevel.setTextColor(levelColor);
 
         if (tvRiskState != null) {

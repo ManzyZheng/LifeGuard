@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ui_page_bg"
+    android:background="@drawable/bg_ai_gradient_emergency"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:background="@color/ui_card_white"
+            android:background="#E6FFFFFF"
             android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/medium_risk_title"
-                android:textColor="@color/ui_text_dark"
+                android:textColor="@color/ai_text_main"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -45,10 +45,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_card_white_16"
+            android:background="@drawable/bg_glass_card"
             android:padding="12dp"
             android:text="@string/medium_risk_prompt"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="18sp" />
 
         <TextView
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/medium_risk_timer_default"
-            android:textColor="@color/ui_risk_high"
+            android:textColor="@color/ai_emergency_red"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -66,10 +66,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_card_white_16"
+            android:background="@drawable/bg_glass_card"
             android:padding="12dp"
             android:text="@string/medium_risk_voice_ready"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="17sp" />
 
         <Button
@@ -77,24 +77,29 @@
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_button_safe_soft"
+            android:background="@drawable/bg_ai_button_secondary"
             android:backgroundTint="@null"
             app:backgroundTint="@null"
             android:text="@string/common_im_fine"
             android:textAllCaps="false"
-            android:textColor="@color/ui_risk_safe"
+            android:textColor="@color/ai_text_main"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnMediumHelp"
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_button_danger"
+            android:background="@drawable/bg_ai_button_primary"
             android:textAllCaps="false"
             android:text="@string/medium_risk_help"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_emergency_red"
             android:textSize="22sp"
             android:textStyle="bold" />
 

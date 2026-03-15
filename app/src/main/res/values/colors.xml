@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="safe_green">#1E8E3E</color>
     <color name="medium_risk_red">#D84315</color>
     <color name="high_risk_red">#B00020</color>
     <color name="bg_dark">#121212</color>
     <color name="text_primary">#FFFFFF</color>
     <color name="text_secondary">#D0D0D0</color>
-    <color name="accent_blue">#42A5F5</color>
-    <color name="action_red">#E53935</color>
-    <!-- ===== Light medical UI (preview) ===== -->
-    <color name="ui_card_white">#FFFFFF</color>
-    <color name="ui_page_bg">#F8F6F6</color>
-    <color name="ui_brand_orange">#EC5B13</color>
-    <color name="ui_text_dark">#1A1C2E</color>
-    <color name="ui_text_muted">#64748B</color>
-    <color name="ui_risk_safe">#10B981</color>
-    <color name="ui_risk_low">#EAB308</color>
-    <color name="ui_risk_medium">#F97316</color>
-    <color name="ui_risk_high">#EF4444</color>
-    <color name="ui_nav_inactive">#94A3B8</color>
+
+    <!-- ===== Modern AI UI Colors ===== -->
+    <color name="ai_bg_gradient_start">#F0F4F8</color>
+    <color name="ai_bg_gradient_end">#FFFFFF</color>
+    <color name="ai_bg_gradient_emergency_start">#FFF1F2</color>
+    <color name="ai_bg_gradient_emergency_end">#FFFFFF</color>
+
+    <color name="ai_soft_blue">#D1E3F8</color>
+    <color name="ai_accent_blue">#3B82F6</color>
+    <color name="ai_accent_green">#10B981</color>
+    <color name="ai_text_main">#1E293B</color>
+    <color name="ai_text_sub">#64748B</color>
+
+    <color name="ai_emergency_red">#EF4444</color>
 </resources>

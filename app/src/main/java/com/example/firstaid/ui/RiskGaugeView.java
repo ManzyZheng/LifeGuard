@@ -37,12 +37,12 @@ public class RiskGaugeView extends View {
 
         trackPaint.setStyle(Paint.Style.STROKE);
         trackPaint.setStrokeWidth(stroke);
-        trackPaint.setColor(Color.parseColor("#E9EDF3"));
+        trackPaint.setColor(Color.parseColor("#E2E8F0")); // AI soft gray
 
         progressPaint.setStyle(Paint.Style.STROKE);
         progressPaint.setStrokeCap(Paint.Cap.ROUND);
         progressPaint.setStrokeWidth(stroke);
-        progressPaint.setColor(Color.parseColor("#10B981"));
+        progressPaint.setColor(Color.parseColor("#10B981")); // AI accent green
     }
 
     @Override

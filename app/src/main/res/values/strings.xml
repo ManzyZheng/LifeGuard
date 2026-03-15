@@ -38,7 +38,6 @@
     <string name="main_card_ar_guide">AR 指引</string>
     <string name="main_demo_mode">演示模式</string>
     <string name="main_mock_risk">开启模拟测试</string>
-    <string name="main_hotline_number">120</string>
     <string name="main_hotline_sos">SOS</string>
     <string name="main_demo_monitor_state">监测状态：演示模式（低风险起始）</string>
     <string name="main_demo_suggestion">如需帮助，请点击“我需要帮助（进入中风险）”。</string>

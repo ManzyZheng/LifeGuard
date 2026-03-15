@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/ui_page_bg"
+    android:background="@drawable/bg_ai_gradient_emergency"
     android:fillViewport="true">
 
     <LinearLayout
@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            android:background="@color/ui_card_white"
+            android:background="#E6FFFFFF"
             android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/emergency_title"
-                android:textColor="@color/ui_text_dark"
+                android:textColor="@color/ai_text_main"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_danger"
+            android:background="@drawable/bg_ai_button_primary"
             android:text="" />
 
         <TextView
@@ -54,67 +54,87 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_card_white_16"
+            android:background="@drawable/bg_glass_card"
             android:padding="12dp"
             android:text="@string/emergency_rescue_processing"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="17sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_card_white_16"
+            android:background="@drawable/bg_glass_card"
             android:padding="12dp"
             android:text="@string/emergency_steps"
-            android:textColor="@color/ui_text_dark"
+            android:textColor="@color/ai_text_main"
             android:textSize="17sp" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnAutoCall"
             android:layout_width="match_parent"
             android:layout_height="64dp"
             android:layout_marginTop="14dp"
-            android:background="@drawable/bg_button_danger"
+            android:background="@drawable/bg_ai_button_primary"
             android:textAllCaps="false"
             android:text="@string/emergency_auto_call"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_emergency_red"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnShareLocation"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_orange_16"
+            android:background="@drawable/bg_ai_button_soft_blue"
             android:textAllCaps="false"
             android:text="@string/emergency_share_location"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_accent_blue"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnOpenArGuide"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_orange_16"
+            android:background="@drawable/bg_ai_button_soft_blue"
             android:textAllCaps="false"
             android:text="@string/emergency_open_ar"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_accent_blue"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
+        android:backgroundTint="@null"
+        app:backgroundTint="@null"
+        android:elevation="0dp"
+        android:stateListAnimator="@null"
+        android:fontFamily="sans-serif-medium"
             android:id="@+id/btnOpenCollaboration"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_orange_16"
+            android:background="@drawable/bg_ai_button_soft_blue"
             android:textAllCaps="false"
             android:text="@string/emergency_open_collaboration"
-            android:textColor="@android:color/white"
+            android:textColor="@color/ai_accent_blue"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -123,12 +143,12 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_safe_soft"
+            android:background="@drawable/bg_ai_button_secondary"
             android:backgroundTint="@null"
             app:backgroundTint="@null"
             android:text="@string/emergency_finish_recovery"
             android:textAllCaps="false"
-            android:textColor="@color/ui_risk_safe"
+            android:textColor="@color/ai_text_main"
             android:textStyle="bold" />
 
     </LinearLayout>
