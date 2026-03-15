@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/ui_page_bg"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,19 +14,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_panel"
+            android:layout_height="62dp"
+            android:background="@color/ui_card_white"
+            android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
             <Button
                 android:id="@+id/btnTopBack"
                 android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_panel"
-                android:text="返回"
-                android:textColor="@color/text_primary"
+                android:layout_height="42dp"
+                android:background="@android:color/transparent"
+                android:text="@string/common_back"
+                android:textAllCaps="false"
+                android:textColor="@color/ui_brand_orange"
                 android:textStyle="bold" />
 
             <TextView
@@ -32,9 +37,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="系统恢复"
-                android:textColor="@color/text_primary"
-                android:textSize="22sp"
+                android:text="@string/recovery_title"
+                android:textColor="@color/ui_text_dark"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Space
@@ -46,28 +51,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_panel"
+            android:background="@drawable/bg_card_white_16"
             android:padding="12dp"
-            android:text="当前状态：风险已解除。\n急救记录总结：\n- 已启动急救模式\n- 已发起120呼救\n- 已生成协同救援任务"
-            android:textColor="@color/text_primary"
-            android:textSize="18sp" />
+            android:text="@string/recovery_summary"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="17sp" />
 
         <CheckBox
             android:id="@+id/cbNotifyContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="通知紧急联系人"
-            android:textColor="@color/text_primary"
-            android:textSize="20sp" />
+            android:text="@string/recovery_notify_contact"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/btnSaveRecovery"
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_button_primary"
-            android:text="保存本次急救记录"
+            android:background="@drawable/bg_button_orange_16"
+            android:textAllCaps="false"
+            android:text="@string/recovery_save_record"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
@@ -76,9 +82,12 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:text="返回首页"
-            android:textColor="@color/text_primary" />
+            android:background="@drawable/bg_button_safe_soft"
+            android:backgroundTint="@null"
+            app:backgroundTint="@null"
+            android:text="@string/recovery_back_home"
+            android:textAllCaps="false"
+            android:textColor="@color/ui_risk_safe" />
 
     </LinearLayout>
 

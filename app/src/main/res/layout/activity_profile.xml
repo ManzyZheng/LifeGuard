@@ -1,138 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/ui_page_bg">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="92dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_panel"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="6dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:background="@color/ui_card_white"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <Button
+                    android:id="@+id/btnTopBack"
+                    android:layout_width="82dp"
+                    android:layout_height="42dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/common_back"
+                    android:textAllCaps="false"
+                    android:textColor="@color/ui_brand_orange"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/profile_title"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <Space
+                    android:layout_width="82dp"
+                    android:layout_height="1dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etName"
+                    android:text="@string/profile_name"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etAge"
+                    android:text="@string/profile_age"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etAge"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etBloodType"
+                    android:text="@string/profile_blood_type"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etBloodType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etAllergy"
+                    android:text="@string/profile_allergy"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etAllergy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etDisease"
+                    android:text="@string/profile_disease"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etDisease"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etContactName"
+                    android:text="@string/profile_contact_name"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etContactName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="textPersonName"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_card_white_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp">
+
+                <TextView
+                    android:layout_width="96dp"
+                    android:layout_height="wrap_content"
+                    android:labelFor="@id/etContactPhone"
+                    android:text="@string/profile_contact_phone"
+                    android:textColor="@color/ui_text_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etContactPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:importantForAutofill="no"
+                    android:inputType="phone"
+                    android:singleLine="true"
+                    android:textColor="@color/ui_text_dark"
+                    android:textColorHint="@color/ui_text_muted" />
+            </LinearLayout>
 
             <Button
-                android:id="@+id/btnTopBack"
-                android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_panel"
-                android:text="返回"
-                android:textColor="@color/text_primary"
+                android:id="@+id/btnSaveProfile"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_button_orange_16"
+                android:text="@string/profile_save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
                 android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_gravity="bottom"
+        android:background="@color/ui_card_white"
+        android:baselineAligned="false"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp">
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_home"
+                app:tint="@color/ui_nav_inactive" />
 
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="个人中心"
-                android:textColor="@color/text_primary"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <Space
-                android:layout_width="82dp"
-                android:layout_height="1dp" />
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_home"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
         </LinearLayout>
 
-        <EditText
-            android:id="@+id/etName"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_panel"
-            android:hint="姓名"
-            android:inputType="textPersonName"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+        <LinearLayout
+            android:id="@+id/navKnowledge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etAge"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:hint="年龄"
-            android:inputType="number"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_learn"
+                app:tint="@color/ui_nav_inactive" />
 
-        <EditText
-            android:id="@+id/etBloodType"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:hint="血型"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_learn"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/etAllergy"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:hint="过敏史"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+        <LinearLayout
+            android:id="@+id/navAed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/etDisease"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:hint="慢性疾病"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_map"
+                app:tint="@color/ui_nav_inactive" />
 
-        <EditText
-            android:id="@+id/etContactName"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="14dp"
-            android:background="@drawable/bg_panel"
-            android:hint="紧急联系人姓名"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_aed_map"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/etContactPhone"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:hint="紧急联系人电话"
-            android:inputType="phone"
-            android:padding="12dp"
-            android:textColor="@color/text_primary"
-            android:textColorHint="@color/text_secondary" />
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnSaveProfile"
-            android:layout_width="match_parent"
-            android:layout_height="58dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_button_primary"
-            android:text="保存资料"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_settings"
+                app:tint="@color/ui_brand_orange" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_settings"
+                android:textColor="@color/ui_brand_orange"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</FrameLayout>

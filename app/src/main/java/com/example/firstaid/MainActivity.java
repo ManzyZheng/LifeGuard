@@ -23,6 +23,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.firstaid.logic.RiskPopupCoordinator;
 import com.example.firstaid.model.RiskLevel;
 import com.example.firstaid.service.BackgroundDetectionService;
@@ -164,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
         }
         tvRiskLevel.setText(getRiskText(level));
         tvRiskScore.setText(String.valueOf(score));
-        tvMonitor.setText("监测状态：" + monitorState);
+        tvMonitor.setText(getString(R.string.main_monitor_state_format, monitorState));
         tvSuggestion.setText(suggestion);
         applyRiskVisual(level, score);
         updateLowRiskAction(level);
@@ -220,35 +223,35 @@ public class MainActivity extends AppCompatActivity {
 
     private void forceRiskEscalationForDemo() {
         demoLowRiskMode = true;
-        tvRiskLevel.setText("低风险");
-        tvRiskScore.setText("80");
-        tvMonitor.setText("监测状态：演示模式（低风险起始）");
-        tvSuggestion.setText("如需帮助，请点击“我需要帮助（进入中风险）”。");
+        tvRiskLevel.setText(R.string.main_risk_low);
+        tvRiskScore.setText(R.string.main_risk_score_demo_low);
+        tvMonitor.setText(R.string.main_demo_monitor_state);
+        tvSuggestion.setText(R.string.main_demo_suggestion);
         applyRiskVisual(RiskLevel.LOW, 80);
         updateLowRiskAction(RiskLevel.LOW);
         updateSafeConfirmAction(RiskLevel.LOW);
         updateDemoEntryVisibility(RiskLevel.LOW);
-        Toast.makeText(this, "已从低风险启动演示流程", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.main_demo_started_toast, Toast.LENGTH_SHORT).show();
     }
 
     private String getRiskText(RiskLevel level) {
         switch (level) {
             case LOW:
-                return "低风险";
+                return getString(R.string.main_risk_low);
             case MEDIUM:
-                return "中风险";
+                return getString(R.string.main_risk_medium);
             case HIGH:
-                return "高风险";
+                return getString(R.string.main_risk_high);
             case SAFE:
             default:
-                return "安全";
+                return getString(R.string.main_risk_safe);
         }
     }
 
     private void renderSafeStatusAfterManualConfirm() {
-        tvRiskLevel.setText("安全");
-        tvRiskScore.setText("100");
-        tvSuggestion.setText("已确认“我没事”，系统恢复安全监测。");
+        tvRiskLevel.setText(R.string.main_risk_safe);
+        tvRiskScore.setText(R.string.main_risk_score_default);
+        tvSuggestion.setText(R.string.main_safe_confirmed_suggestion);
         applyRiskVisual(RiskLevel.SAFE, 100);
         updateLowRiskAction(RiskLevel.SAFE);
         updateSafeConfirmAction(RiskLevel.SAFE);
@@ -291,7 +294,7 @@ public class MainActivity extends AppCompatActivity {
         tvRiskLevel.setTextColor(levelColor);
 
         if (tvRiskState != null) {
-            tvRiskState.setText(level == RiskLevel.SAFE ? "监测中" : "风险预警");
+            tvRiskState.setText(level == RiskLevel.SAFE ? R.string.main_state_monitoring : R.string.main_state_risk_alert);
             tvRiskState.setTextColor(riskStateColor);
         }
 
@@ -309,11 +312,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         if (!riskReceiverRegistered) {
             IntentFilter filter = new IntentFilter(BackgroundDetectionService.ACTION_RISK_UPDATE);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                registerReceiver(riskReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
-            } else {
-                registerReceiver(riskReceiver, filter);
-            }
+            ContextCompat.registerReceiver(this, riskReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
             riskReceiverRegistered = true;
         }
         // Ensure service is alive whenever home screen becomes visible.
@@ -337,13 +336,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void requestRuntimePermissions() {
-        String[] permissions = new String[]{
-                Manifest.permission.CAMERA,
-                Manifest.permission.RECORD_AUDIO,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACTIVITY_RECOGNITION,
-                Manifest.permission.POST_NOTIFICATIONS
-        };
+        List<String> permissionList = new ArrayList<>();
+        permissionList.add(Manifest.permission.CAMERA);
+        permissionList.add(Manifest.permission.RECORD_AUDIO);
+        permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            permissionList.add(Manifest.permission.ACTIVITY_RECOGNITION);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            permissionList.add(Manifest.permission.POST_NOTIFICATIONS);
+        }
+        String[] permissions = permissionList.toArray(new String[0]);
 
         boolean needRequest = false;
         for (String permission : permissions) {

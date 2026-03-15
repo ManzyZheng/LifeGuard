@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.firstaid.logic.RiskPopupCoordinator;
 import com.example.firstaid.model.RiskLevel;
@@ -69,11 +70,7 @@ public class LowRiskPopupActivity extends AppCompatActivity {
         super.onResume();
         if (!riskReceiverRegistered) {
             IntentFilter filter = new IntentFilter(BackgroundDetectionService.ACTION_RISK_UPDATE);
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                registerReceiver(riskReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
-            } else {
-                registerReceiver(riskReceiver, filter);
-            }
+            ContextCompat.registerReceiver(this, riskReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
             riskReceiverRegistered = true;
         }
     }

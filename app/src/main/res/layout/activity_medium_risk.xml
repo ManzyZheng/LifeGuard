@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_warning">
+    android:background="@color/ui_page_bg"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,29 +14,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_panel"
+            android:layout_height="62dp"
+            android:background="@color/ui_card_white"
+            android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
-            <Button
-                android:id="@+id/btnTopBack"
+            <Space
                 android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_panel"
-                android:text="返回"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                android:layout_height="1dp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="中风险干预"
-                android:textColor="@android:color/white"
-                android:textSize="22sp"
+                android:text="@string/medium_risk_title"
+                android:textColor="@color/ui_text_dark"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Space
@@ -46,20 +45,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_panel"
+            android:background="@drawable/bg_card_white_16"
             android:padding="12dp"
-            android:text="检测到异常，请问您是否需要急救？可直接语音回答“需要急救”。"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:text="@string/medium_risk_prompt"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/tvMediumTimer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="剩余确认时间：60秒"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
+            android:text="@string/medium_risk_timer_default"
+            android:textColor="@color/ui_risk_high"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -67,21 +66,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
+            android:background="@drawable/bg_card_white_16"
             android:padding="12dp"
-            android:text="语音状态：准备中..."
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:text="@string/medium_risk_voice_ready"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="17sp" />
 
         <Button
             android:id="@+id/btnMediumSafe"
             android:layout_width="match_parent"
             android:layout_height="68dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/bg_panel"
-            android:text="我没事"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:background="@drawable/bg_button_safe_soft"
+            android:backgroundTint="@null"
+            app:backgroundTint="@null"
+            android:text="@string/common_im_fine"
+            android:textAllCaps="false"
+            android:textColor="@color/ui_risk_safe"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <Button
@@ -90,9 +92,10 @@
             android:layout_height="68dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_button_danger"
-            android:text="需要急救"
+            android:textAllCaps="false"
+            android:text="@string/medium_risk_help"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
     </LinearLayout>

@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:background="@color/ui_page_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@drawable/bg_panel"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:paddingBottom="92dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="62dp"
+        android:background="@color/ui_card_white"
+        android:elevation="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="6dp">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <Button
             android:id="@+id/btnTopBack"
             android:layout_width="82dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_panel"
-            android:text="返回"
-            android:textColor="@color/text_primary"
+            android:layout_height="42dp"
+            android:background="@android:color/transparent"
+            android:text="@string/common_back"
+            android:textAllCaps="false"
+            android:textColor="@color/ui_brand_orange"
             android:textStyle="bold" />
 
         <TextView
@@ -28,9 +37,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="AED导航"
-            android:textColor="@color/text_primary"
-            android:textSize="22sp"
+            android:text="@string/aed_title"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Space
@@ -43,20 +52,135 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_panel"
+        android:background="@drawable/bg_card_white_16"
         android:padding="14dp"
-        android:textColor="@color/text_primary"
-        android:textSize="20sp" />
+        android:textColor="@color/ui_text_dark"
+        android:textSize="18sp" />
 
-    <Button
-        android:id="@+id/btnNavigateAed"
+        <Button
+            android:id="@+id/btnNavigateAed"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/bg_button_orange_16"
+            android:textAllCaps="false"
+            android:text="@string/aed_navigate_button"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/bg_button_primary"
-        android:text="一键导航到AED"
-        android:textColor="@android:color/white"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:layout_height="78dp"
+        android:layout_gravity="bottom"
+        android:background="@color/ui_card_white"
+        android:baselineAligned="false"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp">
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_home"
+                app:tint="@color/ui_nav_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_home"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navKnowledge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_learn"
+                app:tint="@color/ui_nav_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_learn"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navAed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_map"
+                app:tint="@color/ui_brand_orange" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_aed_map"
+                android:textColor="@color/ui_brand_orange"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_settings"
+                app:tint="@color/ui_nav_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_settings"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

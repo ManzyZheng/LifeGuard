@@ -84,11 +84,9 @@ public class MediumRiskActivity extends AppCompatActivity {
 
         TextView tvTimer = findViewById(R.id.tvMediumTimer);
         tvVoiceStatus = findViewById(R.id.tvVoiceStatus);
-        Button btnBack = findViewById(R.id.btnTopBack);
         Button btnSafe = findViewById(R.id.btnMediumSafe);
         Button btnHelp = findViewById(R.id.btnMediumHelp);
 
-        btnBack.setOnClickListener(v -> finishAsSafe());
         btnSafe.setOnClickListener(v -> finishAsSafe());
         btnHelp.setOnClickListener(v -> startHighRiskCountdownThenEmergency());
 
@@ -98,7 +96,7 @@ public class MediumRiskActivity extends AppCompatActivity {
         timer = new CountDownTimer(MEDIUM_RISK_COUNTDOWN_MS, 1_000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                tvTimer.setText("剩余确认时间：" + (millisUntilFinished / 1000) + "秒");
+                tvTimer.setText(getString(R.string.medium_risk_timer_format, millisUntilFinished / 1000));
             }
 
             @Override
@@ -112,7 +110,11 @@ public class MediumRiskActivity extends AppCompatActivity {
     private void vibrateAlert() {
         Vibrator vibrator = getSystemService(Vibrator.class);
         if (vibrator != null && vibrator.hasVibrator()) {
-            vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                vibrator.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+            } else {
+                vibrator.vibrate(500);
+            }
         }
     }
 
@@ -120,7 +122,7 @@ public class MediumRiskActivity extends AppCompatActivity {
         tts = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS) {
                 tts.setLanguage(Locale.CHINA);
-                tts.speak("检测到异常，请问您是否需要急救。", TextToSpeech.QUEUE_FLUSH, null, "medium-risk");
+                tts.speak(getString(R.string.medium_risk_tts_prompt), TextToSpeech.QUEUE_FLUSH, null, "medium-risk");
                 // Start listening after TTS prompt to avoid capturing own speech output.
                 voiceHandler.postDelayed(this::startVoiceListening, 1500L);
             }
@@ -136,12 +138,12 @@ public class MediumRiskActivity extends AppCompatActivity {
         boolean speechRecognizerAvailable = SpeechRecognizer.isRecognitionAvailable(this);
         boolean recognizerIntentAvailable = hasRecognizerIntentService();
         if (!speechRecognizerAvailable && !recognizerIntentAvailable) {
-            tvVoiceStatus.setText("语音状态：未找到语音识别服务，请安装/启用系统语音识别服务");
+            tvVoiceStatus.setText(R.string.medium_risk_voice_no_service);
             return;
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
-            tvVoiceStatus.setText("语音状态：麦克风权限未开启");
+            tvVoiceStatus.setText(R.string.medium_risk_voice_no_permission);
             return;
         }
 
@@ -150,12 +152,12 @@ public class MediumRiskActivity extends AppCompatActivity {
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override
             public void onReadyForSpeech(Bundle params) {
-                tvVoiceStatus.setText("语音状态：正在聆听，请说“需要急救”");
+                tvVoiceStatus.setText(R.string.medium_risk_voice_listening);
             }
 
             @Override
             public void onBeginningOfSpeech() {
-                tvVoiceStatus.setText("语音状态：识别中...");
+                tvVoiceStatus.setText(R.string.medium_risk_voice_recognizing);
             }
 
             @Override
@@ -170,12 +172,12 @@ public class MediumRiskActivity extends AppCompatActivity {
 
             @Override
             public void onEndOfSpeech() {
-                tvVoiceStatus.setText("语音状态：分析语音结果...");
+                tvVoiceStatus.setText(R.string.medium_risk_voice_analyzing);
             }
 
             @Override
             public void onError(int error) {
-                tvVoiceStatus.setText("语音状态：未识别到有效回复，继续监听...");
+                tvVoiceStatus.setText(R.string.medium_risk_voice_no_valid_reply);
                 scheduleVoiceListeningRestart();
             }
 
@@ -183,10 +185,10 @@ public class MediumRiskActivity extends AppCompatActivity {
             public void onResults(Bundle results) {
                 ArrayList<String> texts = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
                 if (containsEmergencyIntent(texts)) {
-                    tvVoiceStatus.setText("语音状态：已识别“需要急救”，正在进入高风险流程");
+                    tvVoiceStatus.setText(R.string.medium_risk_voice_recognized_help);
                     startHighRiskCountdownThenEmergency();
                 } else {
-                    tvVoiceStatus.setText("语音状态：未识别到求救关键词，请继续回答“需要急救”");
+                    tvVoiceStatus.setText(R.string.medium_risk_voice_retry);
                     scheduleVoiceListeningRestart();
                 }
             }
@@ -273,12 +275,12 @@ public class MediumRiskActivity extends AppCompatActivity {
             @Override
             public void onTick(long millisUntilFinished) {
                 long seconds = millisUntilFinished / 1000L;
-                tvVoiceStatus.setText("语音状态：已升级高风险，" + seconds + "秒后进入急救模式");
+                tvVoiceStatus.setText(getString(R.string.medium_risk_voice_enter_emergency_in, seconds));
             }
 
             @Override
             public void onFinish() {
-                tvVoiceStatus.setText("语音状态：正在进入急救模式");
+                tvVoiceStatus.setText(R.string.medium_risk_voice_entering_emergency);
                 startActivity(new Intent(MediumRiskActivity.this, EmergencyModeActivity.class));
                 finish();
             }
@@ -299,7 +301,7 @@ public class MediumRiskActivity extends AppCompatActivity {
         if (highRiskTimer != null) {
             highRiskTimer.cancel();
         }
-        tvVoiceStatus.setText("语音状态：检测到高风险，立即进入急救模式");
+        tvVoiceStatus.setText(R.string.medium_risk_voice_immediate_emergency);
         startActivity(new Intent(MediumRiskActivity.this, EmergencyModeActivity.class));
         finish();
     }
@@ -309,11 +311,7 @@ public class MediumRiskActivity extends AppCompatActivity {
         super.onResume();
         if (!riskReceiverRegistered) {
             IntentFilter filter = new IntentFilter(BackgroundDetectionService.ACTION_RISK_UPDATE);
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                registerReceiver(riskReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
-            } else {
-                registerReceiver(riskReceiver, filter);
-            }
+            ContextCompat.registerReceiver(this, riskReceiver, filter, ContextCompat.RECEIVER_NOT_EXPORTED);
             riskReceiverRegistered = true;
         }
     }

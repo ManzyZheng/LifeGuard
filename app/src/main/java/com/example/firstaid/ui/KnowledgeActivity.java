@@ -1,11 +1,14 @@
 package com.example.firstaid.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firstaid.MainActivity;
 import com.example.firstaid.R;
 
 public class KnowledgeActivity extends AppCompatActivity {
@@ -23,11 +26,24 @@ public class KnowledgeActivity extends AppCompatActivity {
         Button btnAed = findViewById(R.id.btnLearnAed);
         Button btnAirway = findViewById(R.id.btnLearnAirway);
         Button btnBleeding = findViewById(R.id.btnLearnBleeding);
+        View navHome = findViewById(R.id.navHome);
+        View navAed = findViewById(R.id.navAed);
+        View navProfile = findViewById(R.id.navProfile);
 
         btnBack.setOnClickListener(v -> finish());
-        btnCpr.setOnClickListener(v -> tvContent.setText("CPR：先判断意识和呼吸，再进行高质量胸外按压。"));
-        btnAed.setOnClickListener(v -> tvContent.setText("AED：开机后按语音提示贴片并避免接触患者。"));
-        btnAirway.setOnClickListener(v -> tvContent.setText("气道异物：鼓励咳嗽，无效时进行腹部冲击法。"));
-        btnBleeding.setOnClickListener(v -> tvContent.setText("止血包扎：直接压迫出血点，必要时使用止血带。"));
+        btnCpr.setOnClickListener(v -> tvContent.setText(R.string.knowledge_content_cpr));
+        btnAed.setOnClickListener(v -> tvContent.setText(R.string.knowledge_content_aed));
+        btnAirway.setOnClickListener(v -> tvContent.setText(R.string.knowledge_content_airway));
+        btnBleeding.setOnClickListener(v -> tvContent.setText(R.string.knowledge_content_bleeding));
+        navHome.setOnClickListener(v -> openPage(MainActivity.class));
+        navAed.setOnClickListener(v -> openPage(AedNavigationActivity.class));
+        navProfile.setOnClickListener(v -> openPage(ProfileActivity.class));
+    }
+
+    private void openPage(Class<?> target) {
+        Intent intent = new Intent(this, target);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
     }
 }

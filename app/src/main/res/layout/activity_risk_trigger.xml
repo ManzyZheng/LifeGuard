@@ -2,25 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_warning"
+    android:background="@color/ui_page_bg"
     android:orientation="vertical"
     android:padding="16dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:background="@drawable/bg_panel"
+        android:layout_height="62dp"
+        android:background="@color/ui_card_white"
+        android:elevation="2dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="6dp">
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp">
 
         <Button
             android:id="@+id/btnTopBack"
             android:layout_width="82dp"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_panel"
-            android:text="返回"
-            android:textColor="@android:color/white"
+            android:layout_height="42dp"
+            android:background="@android:color/transparent"
+            android:text="@string/common_back"
+            android:textAllCaps="false"
+            android:textColor="@color/ui_brand_orange"
             android:textStyle="bold" />
 
         <TextView
@@ -28,9 +31,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="风险确认"
-            android:textColor="@android:color/white"
-            android:textSize="22sp"
+            android:text="@string/risk_trigger_title"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Space
@@ -43,9 +46,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
-        android:text="检测到异常情况"
-        android:textColor="@android:color/white"
-        android:textSize="32sp"
+        android:text="@string/risk_trigger_detected"
+        android:textColor="@color/ui_risk_high"
+        android:textSize="30sp"
         android:textStyle="bold" />
 
     <TextView
@@ -53,9 +56,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
-        android:text="请确认是否需要帮助"
-        android:textColor="@android:color/white"
-        android:textSize="20sp" />
+        android:text="@string/risk_trigger_confirm_help"
+        android:textColor="@color/ui_text_dark"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tvCountdown"
@@ -63,8 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="24dp"
-        android:text="60"
-        android:textColor="@android:color/white"
+        android:text="@string/risk_trigger_countdown_default"
+        android:textColor="@color/ui_risk_high"
         android:textSize="80sp"
         android:textStyle="bold" />
 
@@ -73,10 +76,11 @@
         android:layout_width="match_parent"
         android:layout_height="72dp"
         android:layout_marginTop="28dp"
-        android:background="@drawable/bg_panel"
-        android:text="我没事"
-        android:textColor="@android:color/white"
-        android:textSize="28sp"
+        android:background="@drawable/bg_button_safe_soft"
+        android:text="@string/common_im_fine"
+        android:textAllCaps="false"
+        android:textColor="@color/ui_risk_safe"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <Button
@@ -85,9 +89,10 @@
         android:layout_height="72dp"
         android:layout_marginTop="14dp"
         android:background="@drawable/bg_button_danger"
-        android:text="需要帮助"
+        android:textAllCaps="false"
+        android:text="@string/common_need_help"
         android:textColor="@android:color/white"
-        android:textSize="28sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
 </LinearLayout>

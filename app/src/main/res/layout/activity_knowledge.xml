@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/ui_page_bg">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="92dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_panel"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp"
+            android:background="@color/ui_card_white"
+            android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
             <Button
                 android:id="@+id/btnTopBack"
                 android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_panel"
-                android:text="返回"
-                android:textColor="@color/text_primary"
+                android:layout_height="42dp"
+                android:background="@android:color/transparent"
+                android:text="@string/common_back"
+                android:textAllCaps="false"
+                android:textColor="@color/ui_brand_orange"
                 android:textStyle="bold" />
 
             <TextView
@@ -32,9 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="急救知识学习"
-                android:textColor="@color/text_primary"
-                android:textSize="22sp"
+                android:text="@string/knowledge_title"
+                android:textColor="@color/ui_text_dark"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Space
@@ -53,8 +63,9 @@
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_button_primary"
-                android:text="CPR"
+                android:background="@drawable/bg_button_orange_16"
+                android:textAllCaps="false"
+                android:text="@string/knowledge_cpr"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -67,8 +78,9 @@
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_button_primary"
-                android:text="AED"
+                android:background="@drawable/bg_button_orange_16"
+                android:textAllCaps="false"
+                android:text="@string/knowledge_aed"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -84,8 +96,9 @@
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_button_primary"
-                android:text="气道异物"
+                android:background="@drawable/bg_button_orange_16"
+                android:textAllCaps="false"
+                android:text="@string/knowledge_airway"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
@@ -98,23 +111,137 @@
                 android:layout_width="0dp"
                 android:layout_height="54dp"
                 android:layout_weight="1"
-                android:background="@drawable/bg_button_primary"
-                android:text="止血包扎"
+                android:background="@drawable/bg_button_orange_16"
+                android:textAllCaps="false"
+                android:text="@string/knowledge_bleeding"
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvKnowledgeContent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_panel"
-            android:padding="12dp"
-            android:text="请选择技能模块查看内容。"
-            android:textColor="@color/text_primary"
-            android:textSize="18sp" />
+            <TextView
+                android:id="@+id/tvKnowledgeContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_card_white_16"
+                android:padding="12dp"
+                android:text="@string/knowledge_prompt_select"
+                android:textColor="@color/ui_text_dark"
+                android:textSize="17sp" />
 
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_gravity="bottom"
+        android:background="@color/ui_card_white"
+        android:baselineAligned="false"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="8dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="6dp">
+
+        <LinearLayout
+            android:id="@+id/navHome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_home"
+                app:tint="@color/ui_nav_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_home"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navKnowledge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_learn"
+                app:tint="@color/ui_brand_orange" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_learn"
+                android:textColor="@color/ui_brand_orange"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navAed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_map"
+                app:tint="@color/ui_nav_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_aed_map"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navProfile"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="23dp"
+                android:layout_height="23dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_nav_settings"
+                app:tint="@color/ui_nav_inactive" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="@string/nav_settings"
+                android:textColor="@color/ui_nav_inactive"
+                android:textSize="11sp" />
+        </LinearLayout>
     </LinearLayout>
 
-</ScrollView>
+</FrameLayout>

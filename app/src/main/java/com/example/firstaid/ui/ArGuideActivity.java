@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.OptIn;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
@@ -35,13 +36,10 @@ import java.util.Locale;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@OptIn(markerClass = androidx.camera.core.ExperimentalGetImage.class)
 public class ArGuideActivity extends AppCompatActivity {
 
-    private static final String STEP1_CENTER_TEXT = "检查患者意识\n轻拍肩膀并呼喊";
-    private final String[] steps = new String[]{
-            STEP1_CENTER_TEXT,
-            "步骤2：双手放在胸部中央持续按压，保持每分钟120次节奏。"
-    };
+    private String[] steps;
     private static final int TARGET_BPM = 110;
     private static final long BEAT_INTERVAL_MS = 60_000L / TARGET_BPM;
     private static final long DOUBLE_BEAT_GAP_MS = 120L;
@@ -83,7 +81,7 @@ public class ArGuideActivity extends AppCompatActivity {
                 if (granted) {
                     startCameraPipeline();
                 } else {
-                    Toast.makeText(this, "未授予相机权限，无法启动AR胸口定位。", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.ar_camera_permission_denied, Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -91,6 +89,10 @@ public class ArGuideActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ar_guide);
+        steps = new String[]{
+            getString(R.string.ar_center_instruction),
+            getString(R.string.ar_step_two_desc)
+        };
 
         tvStep = findViewById(R.id.tvArStep);
         tvCenterInstruction = findViewById(R.id.tvCenterInstruction);
@@ -152,11 +154,12 @@ public class ArGuideActivity extends AppCompatActivity {
                 cameraProvider = providerFuture.get();
                 bindCameraUseCases();
             } catch (Exception e) {
-                Toast.makeText(this, "相机初始化失败：" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.ar_camera_init_failed, e.getMessage()), Toast.LENGTH_SHORT).show();
             }
         }, ContextCompat.getMainExecutor(this));
     }
 
+    @androidx.camera.core.ExperimentalGetImage
     private void bindCameraUseCases() {
         if (cameraProvider == null) {
             return;
@@ -277,10 +280,10 @@ public class ArGuideActivity extends AppCompatActivity {
 
     private void updateStepUi() {
         if (isStepOne(index)) {
-            tvCenterInstruction.setText(STEP1_CENTER_TEXT);
+            tvCenterInstruction.setText(R.string.ar_center_instruction);
             tvCenterInstruction.setVisibility(View.VISIBLE);
-            tvStep.setText("请观察是否有正常反应与呼吸。若患者无反应，请立即开始胸外按压。");
-            btnNext.setText("患者无反应");
+            tvStep.setText(R.string.ar_step_one_desc);
+            btnNext.setText(R.string.ar_button_no_response);
             applyButtonStyleForDefault();
             setGuideOverlayVisible(false);
             return;
@@ -288,10 +291,10 @@ public class ArGuideActivity extends AppCompatActivity {
         tvCenterInstruction.setVisibility(View.GONE);
         tvStep.setText(steps[index]);
         if (isCompressionStep(index)) {
-            btnNext.setText("附近AED");
+            btnNext.setText(R.string.ar_button_nearby_aed);
             applyButtonStyleForAed();
         } else {
-            btnNext.setText("下一步");
+            btnNext.setText(R.string.ar_next_step);
             applyButtonStyleForDefault();
         }
         setGuideOverlayVisible(true);

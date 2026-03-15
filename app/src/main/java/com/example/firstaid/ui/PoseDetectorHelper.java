@@ -78,6 +78,7 @@ public class PoseDetectorHelper {
         }
     }
 
+    @androidx.camera.core.ExperimentalGetImage
     public void detectFromImageProxy(@NonNull ImageProxy imageProxy) {
         try {
             if (poseLandmarker == null) {
@@ -137,6 +138,7 @@ public class PoseDetectorHelper {
         listener.onChestDetected(clamp01(smoothX), clamp01(smoothY));
     }
 
+    @androidx.camera.core.ExperimentalGetImage
     private Bitmap imageProxyToBitmap(ImageProxy imageProxy) {
         Image image = imageProxy.getImage();
         if (image == null) {

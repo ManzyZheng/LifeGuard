@@ -33,20 +33,18 @@ public class EmergencyModeActivity extends AppCompatActivity {
 
         TextView pulseDot = findViewById(R.id.viewPulseDot);
         TextView tvRescueState = findViewById(R.id.tvRescueState);
-        Button btnBack = findViewById(R.id.btnTopBack);
         Button btnCall = findViewById(R.id.btnAutoCall);
         Button btnLocation = findViewById(R.id.btnShareLocation);
         Button btnArGuide = findViewById(R.id.btnOpenArGuide);
         Button btnCollaboration = findViewById(R.id.btnOpenCollaboration);
         Button btnRecovery = findViewById(R.id.btnFinishEmergency);
 
-        tvRescueState.setText("救援状态：已触发急救流程，等待120响应。");
+        tvRescueState.setText(R.string.emergency_rescue_triggered);
         startPulseAnimation(pulseDot);
         initTts();
 
-        btnBack.setOnClickListener(v -> finish());
         btnCall.setOnClickListener(v -> startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse("tel:120"))));
-        btnLocation.setOnClickListener(v -> Toast.makeText(this, "已发送定位信息（示例流程）", Toast.LENGTH_SHORT).show());
+        btnLocation.setOnClickListener(v -> Toast.makeText(this, R.string.emergency_share_location_toast, Toast.LENGTH_SHORT).show());
         btnArGuide.setOnClickListener(v -> startActivity(new Intent(this, ArGuideActivity.class)));
         btnCollaboration.setOnClickListener(v -> startActivity(new Intent(this, CollaborationActivity.class)));
         btnRecovery.setOnClickListener(v -> {
@@ -68,7 +66,7 @@ public class EmergencyModeActivity extends AppCompatActivity {
         tts = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS) {
                 tts.setLanguage(Locale.CHINA);
-                tts.speak("急救模式已启动。步骤一，检查呼吸。步骤二，开始胸外按压。步骤三，准备AED。", TextToSpeech.QUEUE_FLUSH, null, "emergency-mode");
+                tts.speak(getString(R.string.emergency_tts_script), TextToSpeech.QUEUE_FLUSH, null, "emergency-mode");
             }
         });
     }

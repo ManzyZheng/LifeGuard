@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_dark">
+    android:background="@color/ui_page_bg"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,29 +14,26 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="@drawable/bg_panel"
+            android:layout_height="62dp"
+            android:background="@color/ui_card_white"
+            android:elevation="2dp"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="6dp">
+            android:paddingLeft="12dp"
+            android:paddingRight="12dp">
 
-            <Button
-                android:id="@+id/btnTopBack"
+            <Space
                 android:layout_width="82dp"
-                android:layout_height="match_parent"
-                android:background="@drawable/bg_panel"
-                android:text="返回"
-                android:textColor="@color/text_primary"
-                android:textStyle="bold" />
+                android:layout_height="1dp" />
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="急救模式已启动"
-                android:textColor="@color/text_primary"
-                android:textSize="22sp"
+                android:text="@string/emergency_title"
+                android:textColor="@color/ui_text_dark"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <Space
@@ -55,21 +54,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
+            android:background="@drawable/bg_card_white_16"
             android:padding="12dp"
-            android:text="救援状态：处理中"
-            android:textColor="@color/text_primary"
-            android:textSize="18sp" />
+            android:text="@string/emergency_rescue_processing"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="17sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:background="@drawable/bg_panel"
+            android:background="@drawable/bg_card_white_16"
             android:padding="12dp"
-            android:text="步骤1：检查呼吸\n步骤2：开始胸外按压\n步骤3：准备AED"
-            android:textColor="@color/text_primary"
-            android:textSize="18sp" />
+            android:text="@string/emergency_steps"
+            android:textColor="@color/ui_text_dark"
+            android:textSize="17sp" />
 
         <Button
             android:id="@+id/btnAutoCall"
@@ -77,9 +76,10 @@
             android:layout_height="64dp"
             android:layout_marginTop="14dp"
             android:background="@drawable/bg_button_danger"
-            android:text="自动呼救 / 拨打120"
+            android:textAllCaps="false"
+            android:text="@string/emergency_auto_call"
             android:textColor="@android:color/white"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <Button
@@ -87,10 +87,11 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_primary"
-            android:text="发送定位信息"
+            android:background="@drawable/bg_button_orange_16"
+            android:textAllCaps="false"
+            android:text="@string/emergency_share_location"
             android:textColor="@android:color/white"
-            android:textSize="19sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
@@ -98,10 +99,11 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_primary"
-            android:text="AR急救指导"
+            android:background="@drawable/bg_button_orange_16"
+            android:textAllCaps="false"
+            android:text="@string/emergency_open_ar"
             android:textColor="@android:color/white"
-            android:textSize="19sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
@@ -109,10 +111,11 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_primary"
-            android:text="协同救援"
+            android:background="@drawable/bg_button_orange_16"
+            android:textAllCaps="false"
+            android:text="@string/emergency_open_collaboration"
             android:textColor="@android:color/white"
-            android:textSize="19sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <Button
@@ -120,9 +123,13 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/bg_panel"
-            android:text="结束并进入系统恢复"
-            android:textColor="@color/text_primary" />
+            android:background="@drawable/bg_button_safe_soft"
+            android:backgroundTint="@null"
+            app:backgroundTint="@null"
+            android:text="@string/emergency_finish_recovery"
+            android:textAllCaps="false"
+            android:textColor="@color/ui_risk_safe"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

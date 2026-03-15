@@ -1,13 +1,16 @@
 package com.example.firstaid.ui;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.firstaid.MainActivity;
 import com.example.firstaid.R;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -34,10 +37,23 @@ public class ProfileActivity extends AppCompatActivity {
         etContactPhone = findViewById(R.id.etContactPhone);
         Button btnBack = findViewById(R.id.btnTopBack);
         Button btnSave = findViewById(R.id.btnSaveProfile);
+        View navHome = findViewById(R.id.navHome);
+        View navKnowledge = findViewById(R.id.navKnowledge);
+        View navAed = findViewById(R.id.navAed);
 
         loadData();
         btnBack.setOnClickListener(v -> finish());
         btnSave.setOnClickListener(v -> saveData());
+        navHome.setOnClickListener(v -> openPage(MainActivity.class));
+        navKnowledge.setOnClickListener(v -> openPage(KnowledgeActivity.class));
+        navAed.setOnClickListener(v -> openPage(AedNavigationActivity.class));
+    }
+
+    private void openPage(Class<?> target) {
+        Intent intent = new Intent(this, target);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
     }
 
     private void loadData() {
@@ -61,6 +77,6 @@ public class ProfileActivity extends AppCompatActivity {
         editor.putString("contact_name", etContactName.getText().toString().trim());
         editor.putString("contact_phone", etContactPhone.getText().toString().trim());
         editor.apply();
-        Toast.makeText(this, "个人信息已保存", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.profile_saved_toast, Toast.LENGTH_SHORT).show();
     }
 }

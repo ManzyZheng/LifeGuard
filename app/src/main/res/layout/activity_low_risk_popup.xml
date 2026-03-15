@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_panel"
+    android:background="@drawable/bg_card_white_16"
     android:orientation="vertical"
     android:padding="18dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="低风险提醒"
-        android:textColor="@color/text_primary"
+        android:text="@string/low_risk_title"
+        android:textColor="@color/ui_text_dark"
         android:textSize="24sp"
         android:textStyle="bold" />
 
@@ -19,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/ui_text_muted"
         android:textSize="18sp" />
 
     <Button
@@ -27,9 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_panel"
-        android:text="我没事"
-        android:textColor="@color/text_primary"
+        android:background="@drawable/bg_button_safe_soft"
+        android:text="@string/common_im_fine"
+        android:textAllCaps="false"
+        android:textColor="@color/ui_risk_safe"
         android:textStyle="bold" />
 
     <Button
@@ -37,8 +39,11 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:layout_marginTop="10dp"
-        android:background="@drawable/bg_button_danger"
-        android:text="需要帮助"
+        android:background="@drawable/bg_button_safe_soft"
+        android:backgroundTint="?attr/colorPrimary"
+        app:backgroundTint="?attr/colorPrimary"
+        android:textAllCaps="false"
+        android:text="@string/common_need_help"
         android:textColor="@android:color/white"
         android:textStyle="bold" />
 

@@ -28,7 +28,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="急救台"
+                    android:text="@string/main_title_dashboard"
                     android:textColor="@color/ui_text_dark"
                     android:textSize="19sp"
                     android:textStyle="bold" />
@@ -69,7 +69,7 @@
                                 android:id="@+id/tvRiskScore"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="100"
+                                android:text="@string/main_risk_score_default"
                                 android:textColor="@color/ui_text_dark"
                                 android:textSize="52sp"
                                 android:textStyle="bold" />
@@ -79,7 +79,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="-2dp"
-                                android:text="安全"
+                                android:text="@string/main_risk_safe"
                                 android:textColor="@color/ui_risk_safe"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -91,10 +91,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="54dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_button_danger"
-                        android:backgroundTint="@null"
-                        app:backgroundTint="@null"
-                        android:text="我需要帮助（进入中风险）"
+                        android:background="@drawable/bg_button_safe_soft"
+                        android:backgroundTint="?attr/colorPrimary"
+                        app:backgroundTint="?attr/colorPrimary"
+                        android:text="@string/main_low_risk_help_button"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
@@ -109,7 +109,7 @@
                         android:background="@drawable/bg_button_safe_soft"
                         android:backgroundTint="@null"
                         app:backgroundTint="@null"
-                        android:text="我没事，恢复安全状态"
+                        android:text="@string/main_safe_confirm_button"
                         android:textAllCaps="false"
                         android:textColor="@color/ui_risk_safe"
                         android:textSize="14sp"
@@ -134,8 +134,8 @@
                             android:id="@+id/tvRiskState"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:text="监测中"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/main_state_monitoring"
                             android:textColor="@color/ui_risk_safe"
                             android:textSize="13sp"
                             android:textStyle="bold" />
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="监测状态：等待传感器数据"
+                        android:text="@string/main_monitor_waiting"
                         android:textColor="@color/ui_text_dark"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -156,7 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="状态稳定，继续监测。"
+                        android:text="@string/main_suggestion_stable"
                         android:textColor="@color/ui_text_muted"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -188,6 +188,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="@null"
                                 android:src="@drawable/ic_user_outline" />
                         </FrameLayout>
 
@@ -195,7 +196,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="个人档案"
+                            android:text="@string/main_card_profile"
                             android:textColor="@color/ui_text_dark"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -226,14 +227,15 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_book_outline" />
+                                android:contentDescription="@null"
+                                android:src="@drawable/ic_first_aid_knowledge" />
                         </FrameLayout>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="急救知识"
+                            android:text="@string/main_card_knowledge"
                             android:textColor="@color/ui_text_dark"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -267,6 +269,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="@null"
                                 android:src="@drawable/ic_map_pin_outline" />
                         </FrameLayout>
 
@@ -274,7 +277,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="AED 导航"
+                            android:text="@string/main_card_aed_nav"
                             android:textColor="@color/ui_text_dark"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -305,6 +308,7 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_gravity="center"
+                                android:contentDescription="@null"
                                 android:src="@drawable/ic_view_outline" />
                         </FrameLayout>
 
@@ -312,7 +316,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:text="AR 指引"
+                            android:text="@string/main_card_ar_guide"
                             android:textColor="@color/ui_text_dark"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -324,7 +328,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="演示模式"
+                    android:text="@string/main_demo_mode"
                     android:textColor="#FFA1A1AA"
                     android:textSize="11sp"
                     android:textStyle="bold" />
@@ -335,7 +339,7 @@
                     android:layout_height="56dp"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_button_orange_16"
-                    android:text="开启模拟测试"
+                    android:text="@string/main_mock_risk"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
@@ -360,7 +364,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="120"
+            android:text="@string/main_hotline_number"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -369,10 +373,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-2dp"
-            android:text="SOS"
+            android:text="@string/main_hotline_sos"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -381,6 +385,7 @@
         android:layout_height="78dp"
         android:layout_gravity="bottom"
         android:background="@color/ui_card_white"
+        android:baselineAligned="false"
         android:elevation="10dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -400,16 +405,17 @@
             <ImageView
                 android:layout_width="23dp"
                 android:layout_height="23dp"
+                android:contentDescription="@null"
                 android:src="@drawable/ic_nav_home"
-                android:tint="@color/ui_brand_orange" />
+                app:tint="@color/ui_brand_orange" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="首页"
+                android:text="@string/nav_home"
                 android:textColor="@color/ui_brand_orange"
-                android:textSize="10sp"
+                android:textSize="11sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -424,16 +430,17 @@
             <ImageView
                 android:layout_width="23dp"
                 android:layout_height="23dp"
+                android:contentDescription="@null"
                 android:src="@drawable/ic_nav_learn"
-                android:tint="@color/ui_nav_inactive" />
+                app:tint="@color/ui_nav_inactive" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="学习"
+                android:text="@string/nav_learn"
                 android:textColor="@color/ui_nav_inactive"
-                android:textSize="10sp" />
+                android:textSize="11sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -447,16 +454,17 @@
             <ImageView
                 android:layout_width="23dp"
                 android:layout_height="23dp"
+                android:contentDescription="@null"
                 android:src="@drawable/ic_nav_map"
-                android:tint="@color/ui_nav_inactive" />
+                app:tint="@color/ui_nav_inactive" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="AED地图"
+                android:text="@string/nav_aed_map"
                 android:textColor="@color/ui_nav_inactive"
-                android:textSize="10sp" />
+                android:textSize="11sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -470,16 +478,17 @@
             <ImageView
                 android:layout_width="23dp"
                 android:layout_height="23dp"
+                android:contentDescription="@null"
                 android:src="@drawable/ic_nav_settings"
-                android:tint="@color/ui_nav_inactive" />
+                app:tint="@color/ui_nav_inactive" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
-                android:text="设置"
+                android:text="@string/nav_settings"
                 android:textColor="@color/ui_nav_inactive"
-                android:textSize="10sp" />
+                android:textSize="11sp" />
         </LinearLayout>
     </LinearLayout>
 

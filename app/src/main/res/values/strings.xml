@@ -1,3 +1,122 @@
 <resources>
     <string name="app_name">救在身边</string>
+    <string name="common_back">返回</string>
+
+    <string name="nav_home">首页</string>
+    <string name="nav_learn">学习</string>
+    <string name="nav_aed_map">AED地图</string>
+    <string name="nav_settings">设置</string>
+
+    <string name="profile_title">个人中心</string>
+    <string name="profile_name">姓名</string>
+    <string name="profile_age">年龄</string>
+    <string name="profile_blood_type">血型</string>
+    <string name="profile_allergy">过敏史</string>
+    <string name="profile_disease">慢性疾病</string>
+    <string name="profile_contact_name">紧急联系人</string>
+    <string name="profile_contact_phone">联系人电话</string>
+    <string name="profile_save">保存资料</string>
+    <string name="profile_saved_toast">个人信息已保存</string>
+
+    <string name="main_title_dashboard">急救台</string>
+    <string name="main_risk_score_default">100</string>
+    <string name="main_risk_score_demo_low">80</string>
+    <string name="main_risk_safe">安全</string>
+    <string name="main_risk_low">低风险</string>
+    <string name="main_risk_medium">中风险</string>
+    <string name="main_risk_high">高风险</string>
+    <string name="main_low_risk_help_button">我需要帮助（进入中风险）</string>
+    <string name="main_safe_confirm_button">我没事，恢复安全状态</string>
+    <string name="main_state_monitoring">监测中</string>
+    <string name="main_state_risk_alert">风险预警</string>
+    <string name="main_monitor_waiting">监测状态：等待传感器数据</string>
+    <string name="main_monitor_state_format">监测状态：%1$s</string>
+    <string name="main_suggestion_stable">状态稳定，继续监测。</string>
+    <string name="main_card_profile">个人档案</string>
+    <string name="main_card_knowledge">急救知识</string>
+    <string name="main_card_aed_nav">AED 导航</string>
+    <string name="main_card_ar_guide">AR 指引</string>
+    <string name="main_demo_mode">演示模式</string>
+    <string name="main_mock_risk">开启模拟测试</string>
+    <string name="main_hotline_number">120</string>
+    <string name="main_hotline_sos">SOS</string>
+    <string name="main_demo_monitor_state">监测状态：演示模式（低风险起始）</string>
+    <string name="main_demo_suggestion">如需帮助，请点击“我需要帮助（进入中风险）”。</string>
+    <string name="main_demo_started_toast">已从低风险启动演示流程</string>
+    <string name="main_safe_confirmed_suggestion">已确认“我没事”，系统恢复安全监测。</string>
+
+    <string name="knowledge_title">急救知识学习</string>
+    <string name="knowledge_cpr">CPR</string>
+    <string name="knowledge_aed">AED</string>
+    <string name="knowledge_airway">气道异物</string>
+    <string name="knowledge_bleeding">止血包扎</string>
+    <string name="knowledge_prompt_select">请选择技能模块查看内容。</string>
+    <string name="knowledge_content_cpr">CPR：先判断意识和呼吸，再进行高质量胸外按压。</string>
+    <string name="knowledge_content_aed">AED：开机后按语音提示贴片并避免接触患者。</string>
+    <string name="knowledge_content_airway">气道异物：鼓励咳嗽，无效时进行腹部冲击法。</string>
+    <string name="knowledge_content_bleeding">止血包扎：直接压迫出血点，必要时使用止血带。</string>
+
+    <string name="aed_title">AED导航</string>
+    <string name="aed_navigate_button">一键导航到AED</string>
+    <string name="aed_info_nearest">最近AED：城市中心广场东门（约 320m）</string>
+
+    <string name="ar_title">AR急救指导</string>
+    <string name="ar_center_instruction">检查患者意识\n轻拍肩膀并呼喊</string>
+    <string name="ar_hint">AR叠加：胸口定位 + 按压节奏(110 BPM)</string>
+    <string name="ar_next_step">下一步</string>
+    <string name="ar_button_no_response">患者无反应</string>
+    <string name="ar_button_nearby_aed">附近AED</string>
+    <string name="ar_step_one_desc">请观察是否有正常反应与呼吸。若患者无反应，请立即开始胸外按压。</string>
+    <string name="ar_step_two_desc">步骤2：双手放在胸部中央持续按压，保持每分钟120次节奏。</string>
+    <string name="ar_camera_permission_denied">未授予相机权限，无法启动AR胸口定位。</string>
+    <string name="ar_camera_init_failed">相机初始化失败：%1$s</string>
+
+    <string name="collaboration_title">协同救援</string>
+    <string name="collaboration_qr_placeholder">协作二维码\n（示例占位）</string>
+
+    <string name="emergency_title">急救模式已启动</string>
+    <string name="emergency_rescue_processing">救援状态：处理中</string>
+    <string name="emergency_rescue_triggered">救援状态：已触发急救流程，等待120响应。</string>
+    <string name="emergency_steps">步骤1：检查呼吸\n步骤2：开始胸外按压\n步骤3：准备AED</string>
+    <string name="emergency_auto_call">自动呼救 / 拨打120</string>
+    <string name="emergency_share_location">发送定位信息</string>
+    <string name="emergency_open_ar">AR急救指导</string>
+    <string name="emergency_open_collaboration">协同救援</string>
+    <string name="emergency_finish_recovery">结束并进入系统恢复</string>
+    <string name="emergency_share_location_toast">已发送定位信息（示例流程）</string>
+    <string name="emergency_tts_script">急救模式已启动。步骤一，检查呼吸。步骤二，开始胸外按压。步骤三，准备AED。</string>
+
+    <string name="low_risk_title">低风险提醒</string>
+    <string name="common_im_fine">我没事</string>
+    <string name="common_need_help">需要帮助</string>
+
+    <string name="medium_risk_title">中风险干预</string>
+    <string name="medium_risk_prompt">检测到异常，请问您是否需要急救？可直接语音回答“需要急救”。</string>
+    <string name="medium_risk_timer_default">剩余确认时间：60秒</string>
+    <string name="medium_risk_timer_format">剩余确认时间：%1$d秒</string>
+    <string name="medium_risk_voice_ready">语音状态：准备中...</string>
+    <string name="medium_risk_help">需要急救</string>
+    <string name="medium_risk_tts_prompt">检测到异常，请问您是否需要急救。</string>
+    <string name="medium_risk_voice_no_service">语音状态：未找到语音识别服务，请安装/启用系统语音识别服务</string>
+    <string name="medium_risk_voice_no_permission">语音状态：麦克风权限未开启</string>
+    <string name="medium_risk_voice_listening">语音状态：正在聆听，请说“需要急救”</string>
+    <string name="medium_risk_voice_recognizing">语音状态：识别中...</string>
+    <string name="medium_risk_voice_analyzing">语音状态：分析语音结果...</string>
+    <string name="medium_risk_voice_no_valid_reply">语音状态：未识别到有效回复，继续监听...</string>
+    <string name="medium_risk_voice_recognized_help">语音状态：已识别“需要急救”，正在进入高风险流程</string>
+    <string name="medium_risk_voice_retry">语音状态：未识别到求救关键词，请继续回答“需要急救”</string>
+    <string name="medium_risk_voice_enter_emergency_in">语音状态：已升级高风险，%1$d秒后进入急救模式</string>
+    <string name="medium_risk_voice_entering_emergency">语音状态：正在进入急救模式</string>
+    <string name="medium_risk_voice_immediate_emergency">语音状态：检测到高风险，立即进入急救模式</string>
+
+    <string name="recovery_title">系统恢复</string>
+    <string name="recovery_summary">当前状态：风险已解除。\n急救记录总结：\n- 已启动急救模式\n- 已发起120呼救\n- 已生成协同救援任务</string>
+    <string name="recovery_notify_contact">通知紧急联系人</string>
+    <string name="recovery_save_record">保存本次急救记录</string>
+    <string name="recovery_back_home">返回首页</string>
+
+    <string name="risk_trigger_title">风险确认</string>
+    <string name="risk_trigger_detected">检测到异常情况</string>
+    <string name="risk_trigger_confirm_help">请确认是否需要帮助</string>
+    <string name="risk_trigger_countdown_default">60</string>
 </resources>
