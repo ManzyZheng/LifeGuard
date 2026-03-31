@@ -184,13 +184,13 @@
                     <FrameLayout
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/bg_ai_icon_container">
+                        android:background="@drawable/bg_ai_icon_container_red">
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_user_outline"
-                            app:tint="@color/ai_accent_blue" />
+                            app:tint="@color/ai_emergency_red" />
                     </FrameLayout>
 
                     <TextView
@@ -221,13 +221,14 @@
                     <FrameLayout
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/bg_ai_icon_container">
+                        android:background="@drawable/bg_ai_icon_container_red">
+
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_first_aid_knowledge"
-                            app:tint="@color/ai_accent_blue" />
+                            app:tint="@color/ai_emergency_red" />
                     </FrameLayout>
 
                     <TextView
@@ -257,13 +258,13 @@
                     <FrameLayout
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/bg_ai_icon_container">
+                        android:background="@drawable/bg_ai_icon_container_red">
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_map_pin_outline"
-                            app:tint="@color/ai_accent_blue" />
+                            app:tint="@color/ai_emergency_red" />
                     </FrameLayout>
 
                     <TextView
@@ -293,13 +294,13 @@
                     <FrameLayout
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/bg_ai_icon_container">
+                        android:background="@drawable/bg_ai_icon_container_red">
                         <ImageView
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_view_outline"
-                            app:tint="@color/ai_accent_blue" />
+                            app:tint="@color/ai_emergency_red" />
                     </FrameLayout>
 
                     <TextView
@@ -396,13 +397,13 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_nav_home"
-                app:tint="@color/ai_accent_blue" />
+                app:tint="@color/ai_emergency_red" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:text="@string/nav_home"
-                android:textColor="@color/ai_accent_blue"
+                android:textColor="@color/ai_emergency_red"
                 android:textSize="11sp"
                 android:fontFamily="sans-serif-medium" />
         </LinearLayout>

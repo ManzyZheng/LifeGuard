@@ -17,8 +17,8 @@ import androidx.core.app.NotificationManagerCompat;
 
 import com.example.firstaid.MainActivity;
 import com.example.firstaid.R;
+import com.example.firstaid.logic.OnnxFallDetector;
 import com.example.firstaid.logic.RiskPopupCoordinator;
-import com.example.firstaid.logic.SensorFusionManager;
 import com.example.firstaid.model.RiskLevel;
 import com.example.firstaid.ui.EmergencyModeActivity;
 import com.example.firstaid.ui.LowRiskPopupActivity;
@@ -40,7 +40,7 @@ public class BackgroundDetectionService extends Service {
     private static final int ID_FOREGROUND = 2001;
     private static final long MANUAL_SAFE_SUPPRESS_MS = 20_000L;
 
-    private SensorFusionManager fusionManager;
+    private OnnxFallDetector fallDetector;
     private long lastLowPopupMs = 0L;
     private long lastNavigationMs = 0L;
     private long suppressAutoEscalationUntilMs = 0L;
@@ -50,7 +50,7 @@ public class BackgroundDetectionService extends Service {
     public void onCreate() {
         super.onCreate();
         createChannelsIfNeeded();
-        fusionManager = new SensorFusionManager(this, this::onRiskUpdated);
+        fallDetector = new OnnxFallDetector(this, this::onRiskUpdated);
     }
 
     @Override
@@ -61,8 +61,8 @@ public class BackgroundDetectionService extends Service {
             return START_NOT_STICKY;
         }
         if (ACTION_USER_CONFIRMED_SAFE.equals(action)) {
-            if (fusionManager != null) {
-                fusionManager.resetToSafe();
+            if (fallDetector != null) {
+                fallDetector.resetToSafe();
             }
             suppressAutoEscalationUntilMs = System.currentTimeMillis() + MANUAL_SAFE_SUPPRESS_MS;
             broadcastRisk(RiskLevel.SAFE, 100, "用户已确认安全", "已进入安全恢复冷却期");
@@ -75,8 +75,8 @@ public class BackgroundDetectionService extends Service {
             stopSelf();
             return START_NOT_STICKY;
         }
-        if (fusionManager != null) {
-            fusionManager.start();
+        if (fallDetector != null) {
+            fallDetector.start();
         }
         // Immediately publish a baseline state so UI does not stay at default text.
         broadcastRisk(RiskLevel.SAFE, 100, "后台传感器服务已启动", "状态稳定，继续监测。");
@@ -253,8 +253,8 @@ public class BackgroundDetectionService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (fusionManager != null) {
-            fusionManager.stop();
+        if (fallDetector != null) {
+            fallDetector.stop();
         }
     }
 

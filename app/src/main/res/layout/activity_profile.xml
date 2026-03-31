@@ -400,14 +400,14 @@
                 android:layout_height="23dp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_nav_settings"
-                app:tint="@color/ai_accent_blue" />
+                app:tint="@color/ai_emergency_red" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="1dp"
                 android:text="@string/nav_settings"
-                android:textColor="@color/ai_accent_blue"
+                android:textColor="@color/ai_emergency_red"
                 android:textSize="11sp"
                 android:textStyle="bold" />
         </LinearLayout>
