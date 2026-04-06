@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:paddingBottom="92dp">
+        android:paddingBottom="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -300,117 +300,5 @@
 
         </LinearLayout>
     </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:layout_gravity="bottom"
-        android:background="#E6FFFFFF"
-        android:baselineAligned="false"
-        android:elevation="10dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingBottom="8dp"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingTop="6dp">
-
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_nav_home"
-                app:tint="@color/ai_text_sub" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="@string/nav_home"
-                android:textColor="@color/ai_text_sub"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navKnowledge"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_nav_learn"
-                app:tint="@color/ai_text_sub" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="@string/nav_learn"
-                android:textColor="@color/ai_text_sub"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navAed"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_nav_map"
-                app:tint="@color/ai_text_sub" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="@string/nav_aed_map"
-                android:textColor="@color/ai_text_sub"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navProfile"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="23dp"
-                android:layout_height="23dp"
-                android:contentDescription="@null"
-                android:src="@drawable/ic_nav_settings"
-                app:tint="@color/ai_emergency_red" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="@string/nav_settings"
-                android:textColor="@color/ai_emergency_red"
-                android:textSize="11sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </LinearLayout>
 
 </FrameLayout>

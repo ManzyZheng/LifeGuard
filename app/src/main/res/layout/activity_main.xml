@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:paddingBottom="100dp">
+        android:paddingBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -351,7 +351,7 @@
         android:layout_height="72dp"
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/bg_ai_fab_sos"
         android:clickable="true"
         android:focusable="true"
@@ -368,114 +368,6 @@
             android:textSize="18sp"
             android:fontFamily="sans-serif-medium"
             android:letterSpacing="0.05" />
-    </LinearLayout>
-
-    <!-- Bottom Navigation (Glassy) -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_gravity="bottom"
-        android:background="#E6FFFFFF"
-        android:baselineAligned="false"
-        android:elevation="8dp"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="12dp">
-
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_nav_home"
-                app:tint="@color/ai_emergency_red" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/nav_home"
-                android:textColor="@color/ai_emergency_red"
-                android:textSize="11sp"
-                android:fontFamily="sans-serif-medium" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navKnowledge"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_nav_learn"
-                app:tint="@color/ai_text_sub" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/nav_learn"
-                android:textColor="@color/ai_text_sub"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navAed"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_nav_map"
-                app:tint="@color/ai_text_sub" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/nav_aed_map"
-                android:textColor="@color/ai_text_sub"
-                android:textSize="11sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navProfile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:clickable="true"
-            android:focusable="true">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_nav_settings"
-                app:tint="@color/ai_text_sub" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="@string/nav_settings"
-                android:textColor="@color/ai_text_sub"
-                android:textSize="11sp" />
-        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

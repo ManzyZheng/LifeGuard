@@ -50,7 +50,7 @@
     <string name="knowledge_airway">气道异物</string>
     <string name="knowledge_bleeding">止血包扎</string>
     <string name="knowledge_prompt_select">请选择技能模块查看内容。</string>
-    <string name="knowledge_content_cpr">CPR：先判断意识和呼吸，再进行高质量胸外按压。</string>
+    <string name="knowledge_content_cpr">掌握心肺复苏（CPR）是关键时刻能挽救生命的重要技能。​​正确的CPR操作遵循“CAB”原则，即先进行胸外按压（C），再开放气道（A），最后进行人工呼吸（B）。​​ 对于非专业施救者，如果不愿或无法进行人工呼吸，仅做胸外按压的CPR也比不施救更有效。</string>
     <string name="knowledge_content_aed">AED：开机后按语音提示贴片并避免接触患者。</string>
     <string name="knowledge_content_airway">气道异物：鼓励咳嗽，无效时进行腹部冲击法。</string>
     <string name="knowledge_content_bleeding">止血包扎：直接压迫出血点，必要时使用止血带。</string>
@@ -94,7 +94,7 @@
     <string name="common_need_help">需要帮助</string>
 
     <string name="medium_risk_title">中风险干预</string>
-    <string name="medium_risk_prompt">检测到异常，请问您是否需要急救？可直接语音回答“需要急救”。</string>
+    <string name="medium_risk_prompt">检测到异常，请问您是否需要急救？可直接语音回答“我没事”或“需要急救”。</string>
     <string name="medium_risk_timer_default">剩余确认时间：60秒</string>
     <string name="medium_risk_timer_format">剩余确认时间：%1$d秒</string>
     <string name="medium_risk_voice_ready">语音状态：准备中...</string>
@@ -102,11 +102,16 @@
     <string name="medium_risk_tts_prompt">检测到异常，请问您是否需要急救。</string>
     <string name="medium_risk_voice_no_service">语音状态：未找到语音识别服务，请安装/启用系统语音识别服务</string>
     <string name="medium_risk_voice_no_permission">语音状态：麦克风权限未开启</string>
-    <string name="medium_risk_voice_listening">语音状态：正在聆听，请说“需要急救”</string>
+    <string name="medium_risk_voice_fallback">语音状态：已切换系统语音识别模式</string>
+    <string name="medium_risk_voice_listening">语音状态：正在聆听，请说“我没事”或“需要急救”</string>
+    <string name="medium_risk_voice_listening_fallback">语音状态：请在系统语音面板中说“我没事”或“需要急救”</string>
     <string name="medium_risk_voice_recognizing">语音状态：识别中...</string>
     <string name="medium_risk_voice_analyzing">语音状态：分析语音结果...</string>
     <string name="medium_risk_voice_no_valid_reply">语音状态：未识别到有效回复，继续监听...</string>
     <string name="medium_risk_voice_recognized_help">语音状态：已识别“需要急救”，正在进入高风险流程</string>
+    <string name="medium_risk_voice_recognized_safe">语音状态：已识别“我没事”，恢复安全状态</string>
+    <string name="medium_risk_voice_permission_granted">语音状态：麦克风权限已开启，开始监听</string>
+    <string name="medium_risk_voice_error_format">语音状态：识别异常（错误码：%1$d），重试中...</string>
     <string name="medium_risk_voice_retry">语音状态：未识别到求救关键词，请继续回答“需要急救”</string>
     <string name="medium_risk_voice_enter_emergency_in">语音状态：已升级高风险，%1$d秒后进入急救模式</string>
     <string name="medium_risk_voice_entering_emergency">语音状态：正在进入急救模式</string>

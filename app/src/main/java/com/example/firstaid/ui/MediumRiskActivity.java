@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -21,6 +20,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.firstaid.R;
@@ -29,11 +29,11 @@ import com.example.firstaid.model.RiskLevel;
 import com.example.firstaid.service.BackgroundDetectionService;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
 public class MediumRiskActivity extends AppCompatActivity {
 
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 2011;
     public static final String EXTRA_CONFIRMED_SAFE = "extra_confirmed_safe";
     private static final long MEDIUM_RISK_COUNTDOWN_MS = 60_000L;
     private static final long HIGH_RISK_DELAY_MS = 5_000L;
@@ -134,19 +134,28 @@ public class MediumRiskActivity extends AppCompatActivity {
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "zh-CN");
         recognizerIntent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 3);
+        recognizerIntent.putExtra(RecognizerIntent.EXTRA_PARTIAL_RESULTS, true);
 
         boolean speechRecognizerAvailable = SpeechRecognizer.isRecognitionAvailable(this);
-        boolean recognizerIntentAvailable = hasRecognizerIntentService();
-        if (!speechRecognizerAvailable && !recognizerIntentAvailable) {
+        if (!speechRecognizerAvailable) {
             tvVoiceStatus.setText(R.string.medium_risk_voice_no_service);
             return;
         }
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO)
                 != PackageManager.PERMISSION_GRANTED) {
             tvVoiceStatus.setText(R.string.medium_risk_voice_no_permission);
+            ActivityCompat.requestPermissions(
+                    this,
+                    new String[]{Manifest.permission.RECORD_AUDIO},
+                    REQUEST_RECORD_AUDIO_PERMISSION
+            );
             return;
         }
 
+        if (speechRecognizer != null) {
+            speechRecognizer.cancel();
+            speechRecognizer.destroy();
+        }
         enableVoiceListening = true;
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(this);
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
@@ -177,7 +186,12 @@ public class MediumRiskActivity extends AppCompatActivity {
 
             @Override
             public void onError(int error) {
-                tvVoiceStatus.setText(R.string.medium_risk_voice_no_valid_reply);
+                if (error == SpeechRecognizer.ERROR_NO_MATCH
+                        || error == SpeechRecognizer.ERROR_SPEECH_TIMEOUT) {
+                    tvVoiceStatus.setText(R.string.medium_risk_voice_no_valid_reply);
+                } else {
+                    tvVoiceStatus.setText(getString(R.string.medium_risk_voice_error_format, error));
+                }
                 scheduleVoiceListeningRestart();
             }
 
@@ -187,6 +201,9 @@ public class MediumRiskActivity extends AppCompatActivity {
                 if (containsEmergencyIntent(texts)) {
                     tvVoiceStatus.setText(R.string.medium_risk_voice_recognized_help);
                     startHighRiskCountdownThenEmergency();
+                } else if (containsSafeIntent(texts)) {
+                    tvVoiceStatus.setText(R.string.medium_risk_voice_recognized_safe);
+                    finishAsSafe();
                 } else {
                     tvVoiceStatus.setText(R.string.medium_risk_voice_retry);
                     scheduleVoiceListeningRestart();
@@ -195,7 +212,14 @@ public class MediumRiskActivity extends AppCompatActivity {
 
             @Override
             public void onPartialResults(Bundle partialResults) {
-                // no-op
+                ArrayList<String> partialTexts = partialResults.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+                if (containsEmergencyIntent(partialTexts)) {
+                    tvVoiceStatus.setText(R.string.medium_risk_voice_recognized_help);
+                    startHighRiskCountdownThenEmergency();
+                } else if (containsSafeIntent(partialTexts)) {
+                    tvVoiceStatus.setText(R.string.medium_risk_voice_recognized_safe);
+                    finishAsSafe();
+                }
             }
 
             @Override
@@ -204,14 +228,6 @@ public class MediumRiskActivity extends AppCompatActivity {
             }
         });
 
-    }
-
-    private boolean hasRecognizerIntentService() {
-        List<ResolveInfo> handlers = getPackageManager().queryIntentActivities(
-                new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH),
-                PackageManager.MATCH_DEFAULT_ONLY
-        );
-        return handlers != null && !handlers.isEmpty();
     }
 
     private void startVoiceListening() {
@@ -235,19 +251,80 @@ public class MediumRiskActivity extends AppCompatActivity {
             return false;
         }
         for (String text : texts) {
-            if (text == null) {
+            String normalized = normalizeSpeechText(text);
+            if (normalized.isEmpty()) {
                 continue;
             }
-            String normalized = text.replace(" ", "");
+            if (normalized.contains("不需要急救")
+                    || normalized.contains("不用急救")
+                    || normalized.contains("没事")
+                    || normalized.contains("安全")) {
+                continue;
+            }
             if (normalized.contains("需要急救")
                     || normalized.contains("我要急救")
-                    || normalized.contains("需要帮助")
+                    || normalized.contains("请求急救")
                     || normalized.contains("快救我")
-                    || normalized.contains("救命")) {
+                    || normalized.contains("救命")
+                    || normalized.contains("急救")
+                    || normalized.contains("救我")) {
                 return true;
             }
         }
         return false;
+    }
+
+    private boolean containsSafeIntent(ArrayList<String> texts) {
+        if (texts == null || texts.isEmpty()) {
+            return false;
+        }
+        for (String text : texts) {
+            String normalized = normalizeSpeechText(text);
+            if (normalized.isEmpty()) {
+                continue;
+            }
+            if (normalized.contains("我没事")
+                    || normalized.contains("没事")
+                    || normalized.contains("不需要帮助")
+                    || normalized.contains("不用帮助")
+                    || normalized.contains("不需要急救")
+                    || normalized.contains("不用急救")
+                    || normalized.contains("安全")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private String normalizeSpeechText(String text) {
+        if (text == null) {
+            return "";
+        }
+        return text
+                .replace(" ", "")
+                .replace("，", "")
+                .replace(",", "")
+                .replace("。", "")
+                .replace(".", "")
+                .replace("！", "")
+                .replace("!", "")
+                .replace("？", "")
+                .replace("?", "");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode != REQUEST_RECORD_AUDIO_PERMISSION) {
+            return;
+        }
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            tvVoiceStatus.setText(R.string.medium_risk_voice_permission_granted);
+            initSpeechRecognition();
+            voiceHandler.postDelayed(this::startVoiceListening, 600L);
+        } else {
+            tvVoiceStatus.setText(R.string.medium_risk_voice_no_permission);
+        }
     }
 
     private void finishAsSafe() {

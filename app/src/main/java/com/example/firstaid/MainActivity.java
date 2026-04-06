@@ -131,10 +131,6 @@ public class MainActivity extends AppCompatActivity {
         View btnKnowledge = findViewById(R.id.btnKnowledge);
         View btnProfile = findViewById(R.id.btnProfile);
         btnMockRisk = findViewById(R.id.btnMockRisk);
-        View navHome = findViewById(R.id.navHome);
-        View navKnowledge = findViewById(R.id.navKnowledge);
-        View navAed = findViewById(R.id.navAed);
-        View navProfile = findViewById(R.id.navProfile);
 
         btnAr.setOnClickListener(v -> startActivity(new Intent(this, ArGuideActivity.class)));
         btnAed.setOnClickListener(v -> startActivity(new Intent(this, AedNavigationActivity.class)));
@@ -146,13 +142,6 @@ public class MainActivity extends AppCompatActivity {
             notifyBackgroundServiceUserSafe();
             renderSafeStatusAfterManualConfirm();
         });
-
-        navHome.setOnClickListener(v -> {
-            // Already on home; keep current behavior.
-        });
-        navKnowledge.setOnClickListener(v -> btnKnowledge.performClick());
-        navAed.setOnClickListener(v -> btnAed.performClick());
-        navProfile.setOnClickListener(v -> btnProfile.performClick());
 
         btnHotline.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:120"));
